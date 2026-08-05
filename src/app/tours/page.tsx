@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Nav } from "@/components/ui/Nav";
 import { Footer } from "@/components/ui/Footer";
 import { Container } from "@/components/ui/Container";
@@ -108,7 +109,12 @@ export default function ToursPage() {
               </p>
             </Reveal>
 
-            <ToursBrowser />
+            {/* useSearchParams needs a boundary for static prerendering. */}
+            <Suspense
+              fallback={<div className="h-64" aria-busy="true" aria-live="polite" />}
+            >
+              <ToursBrowser />
+            </Suspense>
           </Container>
         </section>
 

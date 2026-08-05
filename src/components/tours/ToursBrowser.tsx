@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { TourCard } from "./TourCard";
@@ -79,9 +80,20 @@ function FilterSelect({
 }
 
 export function ToursBrowser() {
-  const [query, setQuery] = useState("");
-  const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
+  const searchParams = useSearchParams();
   const prefersReducedMotion = useReducedMotion();
+
+  // Seed from the URL once, so the hero search can hand off its selections.
+  const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
+  const [filters, setFilters] = useState<Filters>(() => ({
+    destination: searchParams.get("destination") ?? ANY,
+    tripType: searchParams.get("tripType") ?? ANY,
+    duration: searchParams.get("duration") ?? ANY,
+    grade: searchParams.get("grade") ?? ANY,
+    season: searchParams.get("season") ?? ANY,
+    state: searchParams.get("state") ?? ANY,
+    budget: searchParams.get("budget") ?? ANY,
+  }));
 
   const setFilter = (key: keyof Filters) => (value: string) =>
     setFilters((current) => ({ ...current, [key]: value }));

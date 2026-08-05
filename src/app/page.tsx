@@ -1,6 +1,14 @@
-import Image from "next/image";
-import { BookOpen, Compass, ShieldCheck, Users } from "lucide-react";
+import {
+  BookOpen,
+  CalendarCheck,
+  Compass,
+  LifeBuoy,
+  School,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
 import { Nav } from "@/components/ui/Nav";
+import { HeroSearch } from "@/components/home/HeroSearch";
 import { Footer } from "@/components/ui/Footer";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -9,6 +17,14 @@ import { PhotoFrame } from "@/components/ui/PhotoFrame";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { HeroMap } from "@/components/hero-map/HeroMap";
 import { placeholderTours } from "@/lib/placeholder-tours";
+
+/** Quiet credibility markers sitting under the search card. */
+const trustMarkers = [
+  { icon: CalendarCheck, label: "Since 1998", tone: "bg-forest/10 text-forest" },
+  { icon: School, label: "500+ Schools Served", tone: "bg-saffron/15 text-saffron" },
+  { icon: ShieldCheck, label: "Safety-First Protocol", tone: "bg-sky/15 text-sky" },
+  { icon: LifeBuoy, label: "24-Hour Trip Line", tone: "bg-maroon/10 text-maroon" },
+];
 
 const highlights = [
   {
@@ -44,37 +60,64 @@ export default function Home() {
 
       <main>
         {/* Hero */}
-        <section className="pt-10 md:pt-16">
-          <Container>
-            <div className="relative overflow-hidden rounded-image">
-              <div className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9]">
-                <Image
-                  src="https://images.unsplash.com/photo-1560756718-59609860409c?fm=jpg&q=60&w=1600&auto=format&fit=crop"
-                  alt="The valley below Raigad Fort in Maharashtra"
-                  fill
-                  priority
-                  sizes="100vw"
-                  className="object-cover [filter:sepia(0.18)_saturate(1.15)_contrast(1.05)_brightness(0.85)]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/90 via-brown/20 to-transparent" />
-              </div>
-              <div className="absolute inset-x-0 bottom-0 p-8 sm:p-12 lg:p-16">
-                <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                  Educational &amp; Heritage Travel
-                </p>
-                <h1 className="mt-3 max-w-2xl font-display text-h1 leading-[1.05] text-cream">
-                  Learning Beyond Classrooms Since 1998
-                </h1>
-                <p className="mt-5 max-w-xl text-body text-cream/90">
-                  Heritage treks, coastal expeditions, and school programs
-                  across Raigad — led by certified guides and local experts.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Button href="/tours" variant="accent">Explore Tours</Button>
-                  <Button variant="inverse">Download Brochure</Button>
-                </div>
-              </div>
+        <section className="relative overflow-hidden pb-20 pt-16 md:pb-28 md:pt-24">
+          {/* Subtle survey-grid backdrop */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-[0.5]"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, var(--color-line) 1px, transparent 1px), linear-gradient(to bottom, var(--color-line) 1px, transparent 1px)",
+              backgroundSize: "88px 88px",
+              maskImage:
+                "radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%)",
+            }}
+          />
+          {/* Warm wash behind the headline */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-beige/60 blur-3xl"
+          />
+
+          <Container className="relative">
+            <span className="inline-flex items-center gap-2.5 rounded-button border border-line bg-white/80 py-2.5 pl-3 pr-5 shadow-soft backdrop-blur-sm">
+              <span className="h-2 w-2 rounded-full bg-saffron" aria-hidden />
+              <span className="text-small font-medium text-brown">
+                Educational &amp; Heritage Travel
+              </span>
+            </span>
+
+            <h1 className="mt-8 max-w-4xl font-display text-h1 leading-[1.05] text-brown">
+              <span className="text-forest">Learning Beyond Classrooms</span>{" "}
+              Since 1998
+            </h1>
+
+            <p className="mt-7 max-w-xl text-body leading-relaxed text-gray-600">
+              Heritage treks, coastal expeditions, and school programs across
+              Raigad — led by certified guides and local experts.
+            </p>
+
+            <div className="mt-12">
+              <HeroSearch />
             </div>
+
+            {/* Trust markers */}
+            <ul className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-5">
+              {trustMarkers.map(({ icon: Icon, label, tone }) => (
+                <li key={label} className="flex items-center gap-3">
+                  <span
+                    className={`flex h-9 w-9 items-center justify-center rounded-full ${tone}`}
+                  >
+                    <Icon className="h-4 w-4" strokeWidth={1.75} />
+                  </span>
+                  <span className="text-small font-medium text-brown">
+                    {label}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </Container>
         </section>
 
