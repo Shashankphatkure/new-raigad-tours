@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-display: var(--font-cormorant);
+  --font-sans: var(--font-manrope);
+  --font-hand: var(--font-caveat);
+
+  /* Type scale */
+  --text-h1: 4rem; /* 64px */
+  --text-h1--line-height: 1.05;
+  --text-h2: 3rem; /* 48px */
+  --text-h2--line-height: 1.1;
+  --text-h3: 2rem; /* 32px */
+  --text-h3--line-height: 1.25;
+  --text-body: 1.125rem; /* 18px */
+  --text-body--line-height: 1.6;
+  --text-small: 0.9375rem; /* 15px */
+  --text-small--line-height: 1.5;
+
+  /* Primary */
+  --color-cream: #f8f4ec;
+  --color-forest: #1e4d3a;
+  --color-forest-dark: #163a2b;
+  --color-brown: #3e2f23;
+
+  /* Accent */
+  --color-saffron: #e98b2a;
+  --color-saffron-dark: #cf7a1f;
+  --color-sky: #4b9cd3;
+
+  /* Neutral */
+  --color-beige: #efe8dd;
+  --color-line: #e6ddcd;
+
+  /* Optional accent — use very little */
+  --color-maroon: #7b2d26;
+
+  /* Radius */
+  --radius-button: 0.875rem; /* 14px */
+  --radius-card: 1.25rem; /* 20px */
+  --radius-image: 1.5rem; /* 24px */
+
+  /* Shadow */
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-brown);
 }
