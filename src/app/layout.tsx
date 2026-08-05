@@ -7,6 +7,19 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
 });
 
+/**
+ * A dedicated, non-variable italic instance for accent words (e.g. the
+ * "Luxury"-style flourish in a headline). The variable Cormorant Garamond
+ * above only ships upright glyphs, so `italic` on it would be a synthetic
+ * browser slant rather than the font's real italic outlines.
+ */
+const cormorantItalic = Cormorant_Garamond({
+  variable: "--font-cormorant-italic",
+  subsets: ["latin"],
+  weight: "500",
+  style: "italic",
+});
+
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
@@ -26,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${manrope.variable} ${caveat.variable}`}
+      className={`${cormorant.variable} ${cormorantItalic.variable} ${manrope.variable} ${caveat.variable}`}
     >
       <body className="min-h-screen font-sans antialiased">{children}</body>
     </html>

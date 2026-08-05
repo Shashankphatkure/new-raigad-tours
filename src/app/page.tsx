@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   BookOpen,
   CalendarCheck,
@@ -10,20 +11,35 @@ import {
 import { Nav } from "@/components/ui/Nav";
 import { HeroSearch } from "@/components/home/HeroSearch";
 import { Footer } from "@/components/ui/Footer";
+import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
+import { AccordionGallery } from "@/components/ui/AccordionGallery";
 import { PhotoFrame } from "@/components/ui/PhotoFrame";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { HeroMap } from "@/components/hero-map/HeroMap";
 import { placeholderTours } from "@/lib/placeholder-tours";
+import { TOURS } from "@/lib/tours/tours";
 
-/** Quiet credibility markers sitting under the search card. */
+/** Same three teasers, reshaped for the accordion gallery — wording untouched. */
+const featuredGalleryItems = placeholderTours.map((tour) => ({
+  image: tour.image,
+  alt: tour.imageAlt,
+  label: tour.title,
+  eyebrow: tour.eyebrow,
+  meta: tour.meta,
+  description: tour.description,
+  link: TOURS.find((t) => t.title === tour.title)
+    ? `/tours/${TOURS.find((t) => t.title === tour.title)!.slug}`
+    : undefined,
+}));
+
+/** Quiet credibility markers sitting under the search card — tuned for the dark hero photo. */
 const trustMarkers = [
-  { icon: CalendarCheck, label: "Since 1998", tone: "bg-forest/10 text-forest" },
-  { icon: School, label: "500+ Schools Served", tone: "bg-saffron/15 text-saffron" },
-  { icon: ShieldCheck, label: "Safety-First Protocol", tone: "bg-sky/15 text-sky" },
-  { icon: LifeBuoy, label: "24-Hour Trip Line", tone: "bg-maroon/10 text-maroon" },
+  { icon: CalendarCheck, label: "Since 1998", tone: "text-saffron" },
+  { icon: School, label: "500+ Schools Served", tone: "text-sky" },
+  { icon: ShieldCheck, label: "Safety-First Protocol", tone: "text-cream" },
+  { icon: LifeBuoy, label: "24-Hour Trip Line", tone: "text-saffron" },
 ];
 
 const highlights = [
@@ -60,41 +76,39 @@ export default function Home() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden pb-20 pt-16 md:pb-28 md:pt-24">
-          {/* Subtle survey-grid backdrop */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.5]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, var(--color-line) 1px, transparent 1px), linear-gradient(to bottom, var(--color-line) 1px, transparent 1px)",
-              backgroundSize: "88px 88px",
-              maskImage:
-                "radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%)",
-              WebkitMaskImage:
-                "radial-gradient(ellipse 90% 70% at 50% 0%, #000 40%, transparent 100%)",
-            }}
-          />
-          {/* Warm wash behind the headline */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-beige/60 blur-3xl"
-          />
+        <section className="relative overflow-hidden">
+          {/* Background photograph */}
+          <div className="absolute inset-0">
+            <Image
+              src="https://images.unsplash.com/photo-1560756718-59609860409c?fm=jpg&q=60&w=1920&auto=format&fit=crop"
+              alt="The valley below Raigad Fort in Maharashtra"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover [filter:sepia(0.18)_saturate(1.15)_contrast(1.05)_brightness(0.75)]"
+            />
+            {/* Dark wash for legible text, plus a vignette toward the edges */}
+            <div className="absolute inset-0 bg-gradient-to-b from-brown/80 via-brown/70 to-forest-dark/90" />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_20%,transparent_0%,rgba(0,0,0,0.35)_100%)]"
+            />
+          </div>
 
-          <Container className="relative">
-            <span className="inline-flex items-center gap-2.5 rounded-button border border-line bg-white/80 py-2.5 pl-3 pr-5 shadow-soft backdrop-blur-sm">
+          <Container className="relative pb-20 pt-16 md:pb-28 md:pt-24">
+            <span className="inline-flex items-center gap-2.5 rounded-button border border-cream/25 bg-cream/10 py-2.5 pl-3 pr-5 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-saffron" aria-hidden />
-              <span className="text-small font-medium text-brown">
+              <span className="text-small font-medium text-cream">
                 Educational &amp; Heritage Travel
               </span>
             </span>
 
-            <h1 className="mt-8 max-w-4xl font-display text-h1 leading-[1.05] text-brown">
-              <span className="text-forest">Learning Beyond Classrooms</span>{" "}
-              Since 1998
+            <h1 className="mt-8 max-w-4xl font-display text-h1 leading-[1.05] text-cream">
+              <span className="font-accent italic text-saffron">Learning</span>{" "}
+              Beyond Classrooms Since 1998
             </h1>
 
-            <p className="mt-7 max-w-xl text-body leading-relaxed text-gray-600">
+            <p className="mt-7 max-w-xl text-body leading-relaxed text-cream/85">
               Heritage treks, coastal expeditions, and school programs across
               Raigad — led by certified guides and local experts.
             </p>
@@ -107,12 +121,10 @@ export default function Home() {
             <ul className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-5">
               {trustMarkers.map(({ icon: Icon, label, tone }) => (
                 <li key={label} className="flex items-center gap-3">
-                  <span
-                    className={`flex h-9 w-9 items-center justify-center rounded-full ${tone}`}
-                  >
-                    <Icon className="h-4 w-4" strokeWidth={1.75} />
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-cream/20 bg-cream/10">
+                    <Icon className={`h-4 w-4 ${tone}`} strokeWidth={1.75} />
                   </span>
-                  <span className="text-small font-medium text-brown">
+                  <span className="text-small font-medium text-cream">
                     {label}
                   </span>
                 </li>
@@ -122,7 +134,7 @@ export default function Home() {
         </section>
 
         {/* Interactive India map */}
-        <section className="py-30">
+        <section id="explore-india" className="py-30">
           <Container>
             <HeroMap />
           </Container>
@@ -151,10 +163,26 @@ export default function Home() {
         <section className="bg-beige py-30">
           <Container>
             <SectionHeading eyebrow="Featured Journeys" title="Popular Tours" />
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {placeholderTours.map((tour) => (
-                <Card key={tour.title} {...tour} />
-              ))}
+            <div className="overflow-hidden rounded-card">
+              <AccordionGallery
+                items={featuredGalleryItems}
+                defaultIndex={1}
+                expandRatio={0.52}
+                trigger="hover"
+                accentColor="#e98b2a"
+                overlayColor="#3e2f23"
+                textColor="#f8f4ec"
+                grayscale
+                showLabels
+                duration={0.6}
+                parallax={0.5}
+                tilt={0}
+                stagger={0.08}
+                height={460}
+                gap={10}
+                radius={20}
+                orientation="horizontal"
+              />
             </div>
           </Container>
         </section>
@@ -186,26 +214,9 @@ export default function Home() {
             </div>
           </Container>
         </section>
-
-        {/* CTA banner */}
-        <section className="bg-forest py-30">
-          <Container className="flex flex-col items-center gap-5 text-center">
-            <h2 className="max-w-2xl font-display text-h2 leading-tight text-cream">
-              Ready to plan your school&apos;s next educational journey?
-            </h2>
-            <p className="max-w-xl text-body text-cream/85">
-              Tell us your group size and dates, and we&apos;ll help design a
-              heritage or nature itinerary that fits.
-            </p>
-            <div className="mt-3">
-              <Button href="/contact" variant="accent">
-                Get in Touch
-              </Button>
-            </div>
-          </Container>
-        </section>
       </main>
 
+      <TrustPromo />
       <Footer />
     </>
   );

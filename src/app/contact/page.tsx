@@ -9,8 +9,8 @@ import {
 } from "lucide-react";
 import { Nav } from "@/components/ui/Nav";
 import { Footer } from "@/components/ui/Footer";
+import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { EnquiryForm } from "@/components/contact/EnquiryForm";
 import { ContactMap } from "@/components/contact/ContactMap";
@@ -258,31 +258,9 @@ export default function ContactPage() {
             </div>
           </Container>
         </section>
-
-        {/* ---------- Closing CTA ---------- */}
-        <section className="bg-forest py-30">
-          <Container>
-            <Reveal className="flex flex-col items-center gap-8 text-center">
-              <h2 className="max-w-3xl font-display text-h2 leading-tight text-cream">
-                Every unforgettable journey begins with a conversation.
-              </h2>
-              <p className="max-w-xl text-body text-cream/85">
-                Call us, message us on WhatsApp, or send the form above — a
-                trip planner will pick it up the same day.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button href={OFFICE.phones[0].href} variant="accent">
-                  Call {OFFICE.phones[0].value}
-                </Button>
-                <Button href={OFFICE.whatsapp.href} variant="inverse">
-                  Message on WhatsApp
-                </Button>
-              </div>
-            </Reveal>
-          </Container>
-        </section>
       </main>
 
+      <TrustPromo />
       <Footer />
     </>
   );

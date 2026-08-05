@@ -3,12 +3,13 @@ import Image from "next/image";
 import { Compass, HeartHandshake, ShieldCheck, Sprout } from "lucide-react";
 import { Nav } from "@/components/ui/Nav";
 import { Footer } from "@/components/ui/Footer";
+import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Counter } from "@/components/ui/Counter";
 import { Timeline } from "@/components/about/Timeline";
 import { HandwrittenQuote } from "@/components/about/HandwrittenQuote";
+import { GradientWaves } from "@/components/ui/GradientWaves";
 import { ABOUT_IMAGES } from "@/lib/about-images";
 import {
   SAFETY_PROMISES,
@@ -33,27 +34,63 @@ export default function AboutPage() {
 
       <main>
         {/* ---------- Hero ---------- */}
-        <section className="pt-16 md:pt-24">
-          <Container>
-            <Reveal className="max-w-4xl">
-              <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                Our Story
-              </p>
-              <h1 className="mt-4 font-display text-h1 leading-[1.05] text-brown">
-                More than destinations.
-                <span className="block text-forest">
-                  We create lifelong memories.
-                </span>
-              </h1>
-              <p className="mt-8 max-w-xl text-body leading-relaxed text-gray-600">
-                Since 1998, Raigad Tours has taken school groups out of the
-                classroom and into the places their textbooks describe — forts,
-                caves, coastlines, factory floors and science centres across
-                India.
-              </p>
-            </Reveal>
+        <section className="relative overflow-hidden pb-20 pt-16 md:pb-28 md:pt-24">
+          <div className="absolute inset-0">
+            <GradientWaves
+              horizonColor="#1E4D3A"
+              waveColor="#163A2B"
+              crestColor="#E98B2A"
+              speed={0.4}
+              amplitude={2.5}
+              waveScale={0.6}
+              waveRatio={0.6}
+              swell={35}
+              turbulence={20}
+              tilt={1.11}
+              zoom={1}
+              height={5.5}
+              fogDepth={15}
+              detail="medium"
+              brightness={1}
+              opacity={1}
+              mouseInteraction
+              parallaxStrength={0.5}
+              grain
+              grainIntensity={0.05}
+            />
+          </div>
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-t from-brown/55 via-transparent to-transparent"
+          />
 
-            <Reveal delay={0.15} className="mt-16">
+          <Container className="relative">
+            <Reveal className="max-w-3xl">
+              <div className="rounded-card border border-cream/15 bg-cream/10 p-8 shadow-soft backdrop-blur-md sm:p-12">
+                <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
+                  Our Story
+                </p>
+                <h1 className="mt-4 font-display text-h1 leading-[1.05] text-cream">
+                  More than destinations.
+                  <span className="block text-saffron">
+                    We create lifelong memories.
+                  </span>
+                </h1>
+                <p className="mt-8 max-w-xl text-body leading-relaxed text-cream/85">
+                  Since 1998, Raigad Tours has taken school groups out of the
+                  classroom and into the places their textbooks describe — forts,
+                  caves, coastlines, factory floors and science centres across
+                  India.
+                </p>
+              </div>
+            </Reveal>
+          </Container>
+        </section>
+
+        {/* ---------- Hero photograph ---------- */}
+        <section className="py-20 md:py-24">
+          <Container>
+            <Reveal>
               <div className="relative aspect-[16/9] overflow-hidden rounded-image bg-beige lg:aspect-[21/9]">
                 <Image
                   src={ABOUT_IMAGES.hero.src}
@@ -225,7 +262,7 @@ export default function AboutPage() {
         </section>
 
         {/* ---------- Safety Promise ---------- */}
-        <section className="bg-beige py-30">
+        <section id="safety" className="bg-beige py-30">
           <Container>
             <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
               <Reveal>
@@ -362,26 +399,9 @@ export default function AboutPage() {
             </div>
           </Container>
         </section>
-
-        {/* ---------- Closing CTA ---------- */}
-        <section className="bg-forest py-30">
-          <Container>
-            <Reveal className="flex flex-col items-center gap-8 text-center">
-              <h2 className="max-w-3xl font-display text-h2 leading-tight text-cream">
-                Let&apos;s plan your school&apos;s next unforgettable journey.
-              </h2>
-              <p className="max-w-xl text-body text-cream/85">
-                Tell us your group size, year level and preferred dates — we
-                will send back a costed itinerary within three working days.
-              </p>
-              <Button href="/contact" variant="accent">
-                Get in Touch
-              </Button>
-            </Reveal>
-          </Container>
-        </section>
       </main>
 
+      <TrustPromo />
       <Footer />
     </>
   );

@@ -5,11 +5,11 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Nav } from "@/components/ui/Nav";
 import { Footer } from "@/components/ui/Footer";
+import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { ArticleBody } from "@/components/journal/ArticleBody";
 import { ArticleCard } from "@/components/journal/ArticleCard";
-import { NewsletterCta } from "@/components/journal/NewsletterCta";
 import { ARTICLES, getArticle, getRelatedArticles } from "@/lib/journal/articles";
 import { JOURNAL_IMAGES } from "@/lib/journal/images";
 import { DESTINATIONS } from "@/components/hero-map/data";
@@ -177,7 +177,7 @@ export default async function ArticlePage(props: PageProps<"/journal/[slug]">) {
         </section>
       </main>
 
-      <NewsletterCta />
+      <TrustPromo />
       <Footer />
     </>
   );

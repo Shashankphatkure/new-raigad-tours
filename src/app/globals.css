@@ -3,6 +3,7 @@
 @theme inline {
   /* Fonts */
   --font-display: var(--font-cormorant);
+  --font-accent: var(--font-cormorant-italic);
   --font-sans: var(--font-manrope);
   --font-hand: var(--font-caveat);
 

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Nav } from "@/components/ui/Nav";
 import { Footer } from "@/components/ui/Footer";
+import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { TourCard } from "@/components/tours/TourCard";
 import { ToursBrowser } from "@/components/tours/ToursBrowser";
@@ -170,26 +170,9 @@ export default function ToursPage() {
             </section>
           );
         })}
-
-        {/* ---------- Closing CTA ---------- */}
-        <section className="bg-forest py-30">
-          <Container>
-            <Reveal className="flex flex-col items-center gap-8 text-center">
-              <h2 className="max-w-3xl font-display text-h2 leading-tight text-cream">
-                Not seeing quite the right fit?
-              </h2>
-              <p className="max-w-xl text-body text-cream/85">
-                Most of our itineraries began as a request from a teacher. Tell
-                us the syllabus you are working to and we will build around it.
-              </p>
-              <Button href="/contact" variant="accent">
-                Plan a Custom Journey
-              </Button>
-            </Reveal>
-          </Container>
-        </section>
       </main>
 
+      <TrustPromo />
       <Footer />
     </>
   );

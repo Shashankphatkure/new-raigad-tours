@@ -16,6 +16,7 @@ import {
 import Link from "next/link";
 import { Nav } from "@/components/ui/Nav";
 import { Footer } from "@/components/ui/Footer";
+import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -373,26 +374,9 @@ export default async function TourDetailPage(props: PageProps<"/tours/[slug]">) 
             </div>
           </Container>
         </section>
-
-        {/* ---------- Enquiry CTA ---------- */}
-        <section className="bg-forest py-30">
-          <Container>
-            <Reveal className="flex flex-col items-center gap-8 text-center">
-              <h2 className="max-w-3xl font-display text-h2 leading-tight text-cream">
-                Bring your students on this journey.
-              </h2>
-              <p className="max-w-xl text-body text-cream/85">
-                Tell us your group size and preferred dates. We will send back a
-                costed itinerary within three working days.
-              </p>
-              <Button href="/contact" variant="accent">
-                Enquire About {tour.destination}
-              </Button>
-            </Reveal>
-          </Container>
-        </section>
       </main>
 
+      <TrustPromo />
       <Footer />
     </>
   );

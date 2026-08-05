@@ -4,10 +4,10 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Nav } from "@/components/ui/Nav";
 import { Footer } from "@/components/ui/Footer";
+import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { JournalIndex } from "@/components/journal/JournalIndex";
-import { NewsletterCta } from "@/components/journal/NewsletterCta";
 import { FEATURED_ARTICLE } from "@/lib/journal/articles";
 import { JOURNAL_IMAGES } from "@/lib/journal/images";
 
@@ -101,7 +101,7 @@ export default function JournalPage() {
         </section>
       </main>
 
-      <NewsletterCta />
+      <TrustPromo />
       <Footer />
     </>
   );
