@@ -1,4 +1,4 @@
-import type { Destination } from "./types";
+import type { Destination, Region } from "./types";
 
 const img = (base: string) => `${base}?w=1200&q=75&auto=format&fit=crop`;
 
@@ -31,6 +31,8 @@ export const DESTINATIONS: Destination[] = [
       "Crowd gathered in front of the Gateway of India stone monument in Mumbai",
     coordinates: { lat: 19.076, lng: 72.8777 },
     point: { x: 186.6, y: 650.1 },
+    labelOffset: { dx: -46, dy: 4 },
+    labelAnchor: "end",
   },
   {
     id: "pune",
@@ -48,6 +50,8 @@ export const DESTINATIONS: Destination[] = [
       "Indian flag waving beside the fortified walls of Shaniwar Wada in Pune",
     coordinates: { lat: 18.5204, lng: 73.8567 },
     point: { x: 218.8, y: 669.6 },
+    labelOffset: { dx: 42, dy: 6 },
+    labelAnchor: "start",
   },
   {
     id: "lonavala",
@@ -65,6 +69,8 @@ export const DESTINATIONS: Destination[] = [
       "Green hillside under a blue sky with white clouds at Lonavala hill station",
     coordinates: { lat: 18.7546, lng: 73.4062 },
     point: { x: 204, y: 661.4 },
+    labelOffset: { dx: 32, dy: 30 },
+    labelAnchor: "start",
   },
   {
     id: "matheran",
@@ -82,6 +88,8 @@ export const DESTINATIONS: Destination[] = [
       "Narrow-gauge railway tracks disappearing into misty forest at Matheran",
     coordinates: { lat: 18.9866, lng: 73.2707 },
     point: { x: 199.5, y: 653.2 },
+    labelOffset: { dx: 32, dy: -28 },
+    labelAnchor: "start",
   },
   {
     id: "mahabaleshwar",
@@ -99,6 +107,8 @@ export const DESTINATIONS: Destination[] = [
       "Green forested hills above a lake under an overcast sky in Mahabaleshwar",
     coordinates: { lat: 17.9307, lng: 73.6477 },
     point: { x: 211.9, y: 690.3 },
+    labelOffset: { dx: 0, dy: 44 },
+    labelAnchor: "middle",
   },
   {
     id: "nashik",
@@ -115,6 +125,8 @@ export const DESTINATIONS: Destination[] = [
     imageAlt: "River running through the city of Nashik with buildings along the bank",
     coordinates: { lat: 19.9975, lng: 73.7898 },
     point: { x: 216.6, y: 617.8 },
+    labelOffset: { dx: 0, dy: -36 },
+    labelAnchor: "middle",
   },
   {
     id: "ajanta-ellora",
@@ -132,6 +144,8 @@ export const DESTINATIONS: Destination[] = [
       "Rock-cut stone temple structures at the Ellora Caves with a green hillside behind",
     coordinates: { lat: 20.5519, lng: 75.7002 },
     point: { x: 279.5, y: 598.3 },
+    labelOffset: { dx: 54, dy: 6 },
+    labelAnchor: "start",
   },
   {
     id: "goa",
@@ -182,5 +196,45 @@ export const DESTINATIONS: Destination[] = [
       "Symmetrical carved stone pillars inside the Adalaj Stepwell in Gujarat",
     coordinates: { lat: 23.0225, lng: 72.5714 },
     point: { x: 186.5, y: 503.6 },
+  },
+];
+
+/**
+ * Regional groupings shown on the default, collapsed India view. Each
+ * region's `zoom` focal point and scale are hand-tuned to frame that
+ * region's destination cluster (plus its fanned-out labels) once zoomed —
+ * see IndiaMap.tsx for how these drive the camera. `homePoint` is where the
+ * bus waits once a region is entered; it's intentionally distinct from the
+ * shared HOME_POINT (the real Mahad office used by ContactMap), since the
+ * bus should read as "based near Mumbai" for this exploratory experience.
+ */
+export const REGIONS: Region[] = [
+  {
+    id: "maharashtra",
+    name: "Maharashtra",
+    marker: { x: 216.7, y: 640 },
+    zoom: { cx: 236, cy: 658, scale: 3.2 },
+    homePoint: { x: 186.6, y: 650.1 },
+  },
+  {
+    id: "gujarat",
+    name: "Gujarat",
+    marker: { x: 186.5, y: 503.6 },
+    zoom: { cx: 186.5, cy: 503.6, scale: 2.2 },
+    homePoint: { x: 206.5, y: 519.6 },
+  },
+  {
+    id: "goa",
+    name: "Goa",
+    marker: { x: 227.6, y: 782.7 },
+    zoom: { cx: 227.6, cy: 782.7, scale: 2.2 },
+    homePoint: { x: 247.6, y: 772.7 },
+  },
+  {
+    id: "telangana",
+    name: "Telangana",
+    marker: { x: 371.2, y: 709.5 },
+    zoom: { cx: 371.2, cy: 709.5, scale: 2.2 },
+    homePoint: { x: 351.2, y: 693.5 },
   },
 ];

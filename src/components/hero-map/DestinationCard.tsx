@@ -119,7 +119,7 @@ export function DestinationCard({
 
             <div className="pt-1">
               <Button href={tourHref} variant="primary">
-                Explore Tour
+                Explore Journey
               </Button>
             </div>
           </div>

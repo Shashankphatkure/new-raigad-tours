@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/Button";
 import { AccordionGallery } from "@/components/ui/AccordionGallery";
 import { PhotoFrame } from "@/components/ui/PhotoFrame";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { HeroMap } from "@/components/hero-map/HeroMap";
+import { IndiaMap } from "@/components/hero-map/IndiaMap";
 import { placeholderTours } from "@/lib/placeholder-tours";
 import { TOURS } from "@/lib/tours/tours";
 
@@ -136,7 +136,7 @@ export default function Home() {
         {/* Interactive India map */}
         <section id="explore-india" className="py-30">
           <Container>
-            <HeroMap />
+            <IndiaMap />
           </Container>
         </section>
 

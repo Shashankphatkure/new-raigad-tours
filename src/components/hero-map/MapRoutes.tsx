@@ -5,10 +5,19 @@ import { CONTOUR_LINES, INDIA_OUTLINE } from "./map-geometry";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+type MapLandmassProps = {
+  reducedMotion: boolean;
+  /** True once a region is zoomed into — gently recedes the rest of India. */
+  dimmed?: boolean;
+};
+
 /** The landmass: soft beige fill, muted outline, subtle interior contours. */
-export function MapLandmass({ reducedMotion }: { reducedMotion: boolean }) {
+export function MapLandmass({ reducedMotion, dimmed = false }: MapLandmassProps) {
   return (
-    <g>
+    <motion.g
+      animate={{ opacity: dimmed ? 0.55 : 1 }}
+      transition={{ duration: reducedMotion ? 0 : 0.75, ease: EASE }}
+    >
       <motion.path
         d={INDIA_OUTLINE}
         fill="#EFE8DD"
@@ -41,7 +50,7 @@ export function MapLandmass({ reducedMotion }: { reducedMotion: boolean }) {
           />
         ))}
       </g>
-    </g>
+    </motion.g>
   );
 }
 

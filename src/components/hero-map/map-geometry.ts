@@ -67,3 +67,16 @@ export function buildRoutePath(
  * every destination point.
  */
 export const HOME_POINT = { x: 204.4, y: 685 };
+
+/**
+ * Turns a focal point + zoom level into the transform for the map's camera
+ * group, so that (cx, cy) lands exactly at the centre of the viewBox at the
+ * given scale: screenPoint = scale * worldPoint + (x, y).
+ */
+export function computeCameraTransform(cx: number, cy: number, scale: number) {
+  return {
+    x: MAP_VIEWBOX.width / 2 - cx * scale,
+    y: MAP_VIEWBOX.height / 2 - cy * scale,
+    scale,
+  };
+}
