@@ -35,7 +35,7 @@ export const TIMELINE: TimelineEra[] = [
     label: "A safety standard",
     title: "Our safety protocol becomes formal",
     description:
-      "After a decade of learning what school groups actually need, we wrote down our safety protocol — vetted operators, fixed ratios, medical cover, and a 24-hour contact line.",
+      "After a decade of learning what school groups actually need, we wrote down our safety protocol — vetted operators, fixed ratios, medical cover, and a direct contact line to the trip leader.",
     imageSlot: "era-2015",
   },
   {
@@ -81,7 +81,7 @@ export const SAFETY_PROMISES = [
   "Two trained trip leaders for every twenty students",
   "Government-certified drivers and regularly serviced coaches",
   "A qualified first-aider and medical kit on every departure",
-  "24-hour emergency line staffed for the length of the trip",
+  "A direct contact line to the trip leader for the length of the trip",
   "Verified accommodation, inspected before every season",
   "Daily written check-ins with the school throughout",
 ];

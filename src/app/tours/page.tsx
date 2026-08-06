@@ -77,6 +77,28 @@ export default function ToursPage() {
           </Container>
         </section>
 
+        {/* ---------- Popular destinations ---------- */}
+        <section className="bg-beige py-30">
+          <Container>
+            <Reveal className="mb-12">
+              <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
+                Most Requested
+              </p>
+              <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
+                Popular Destinations
+              </h2>
+            </Reveal>
+
+            <div className="grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
+              {POPULAR_TOURS.map((tour, index) => (
+                <Reveal key={tour.slug} delay={index * 0.08}>
+                  <TourCard tour={tour} showPrice={false} />
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </section>
+
         {/* ---------- Featured journeys ---------- */}
         <section className="py-20 md:py-24">
           <Container>
@@ -115,28 +137,6 @@ export default function ToursPage() {
             >
               <ToursBrowser />
             </Suspense>
-          </Container>
-        </section>
-
-        {/* ---------- Popular destinations ---------- */}
-        <section className="bg-beige py-30">
-          <Container>
-            <Reveal className="mb-12">
-              <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                Most Requested
-              </p>
-              <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
-                Popular Destinations
-              </h2>
-            </Reveal>
-
-            <div className="grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
-              {POPULAR_TOURS.map((tour, index) => (
-                <Reveal key={tour.slug} delay={index * 0.08}>
-                  <TourCard tour={tour} showPrice={false} />
-                </Reveal>
-              ))}
-            </div>
           </Container>
         </section>
 

@@ -35,28 +35,28 @@ export function TourCard({ tour, showPrice = true, priority = false }: TourCardP
             />
           )}
 
-          {/* Hover panel — short itinerary, season and educational value. */}
+          {/* Hover panel — three highlights, kept short so it never overflows the card. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-brown/95 via-brown/70 to-transparent p-6 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+            className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-brown/95 via-brown/60 to-transparent p-6 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
           >
             <p className="text-small font-semibold uppercase tracking-[0.12em] text-saffron">
               At a glance
             </p>
-            <ul className="mt-3 flex flex-col gap-1.5">
-              {tour.shortItinerary.map((line) => (
-                <li key={line} className="text-small leading-snug text-cream/90">
-                  {line}
+            <ul className="mt-2.5 flex flex-col gap-1.5">
+              {tour.highlights.slice(0, 3).map((highlight) => (
+                <li
+                  key={highlight}
+                  className="flex items-start gap-2 text-small leading-snug text-cream/90"
+                >
+                  <span
+                    aria-hidden
+                    className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-saffron"
+                  />
+                  {highlight}
                 </li>
               ))}
             </ul>
-            <p className="mt-4 border-t border-cream/20 pt-3 text-small leading-snug text-cream/80">
-              <span className="font-medium text-cream">Best season:</span>{" "}
-              {tour.bestSeason}
-            </p>
-            <p className="mt-2 text-small leading-snug text-cream/80">
-              {tour.educationalValue}
-            </p>
           </div>
 
           <span className="absolute left-5 top-5 rounded-button bg-cream/90 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-forest backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-0">

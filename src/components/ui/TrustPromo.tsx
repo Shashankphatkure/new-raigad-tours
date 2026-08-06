@@ -17,7 +17,7 @@ import { Counter } from "./Counter";
 
 const LEFT_TRUST_ITEMS = [
   { icon: Shield, value: "Safety", label: "Certified Protocol" },
-  { icon: Clock, value: "24/7", label: "Trip Support" },
+  { icon: Clock, value: "Direct", label: "Trip Support" },
   { icon: Tag, value: "Fair", label: "Transparent Pricing" },
   { icon: School, value: "500+", label: "Schools Served" },
   { icon: Users, value: "1,20,000+", label: "Students Guided" },
@@ -29,7 +29,7 @@ const PHOTO_STAT_TILES = [
   { icon: CalendarCheck, value: "27+", label: "Years of Experience" },
   { icon: ShieldCheck, value: "100%", label: "Safety Record" },
   { icon: GraduationCap, value: "1,20,000+", label: "Students Guided" },
-  { icon: LifeBuoy, value: "24/7", label: "Trip Support" },
+  { icon: LifeBuoy, value: "Direct", label: "Trip Support" },
   { icon: Tag, value: "Fair", label: "Transparent Pricing" },
 ];
 

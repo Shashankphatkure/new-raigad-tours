@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Search, SlidersHorizontal, X } from "lucide-react";
+import { ChevronDown, Search, SlidersHorizontal, X } from "lucide-react";
 import { TourCard } from "./TourCard";
 import { TOURS } from "@/lib/tours/tours";
 import {
@@ -82,6 +82,7 @@ function FilterSelect({
 export function ToursBrowser() {
   const searchParams = useSearchParams();
   const prefersReducedMotion = useReducedMotion();
+  const [filtersExpanded, setFiltersExpanded] = useState(true);
 
   // Seed from the URL once, so the hero search can hand off its selections.
   const [query, setQuery] = useState(() => searchParams.get("q") ?? "");
@@ -181,49 +182,96 @@ export function ToursBrowser() {
               </span>
             </label>
 
-            <FilterSelect
-              label="Destination"
-              value={filters.destination}
-              onChange={setFilter("destination")}
-              options={DESTINATIONS.map((d) => ({ value: d, label: d }))}
-            />
-            <FilterSelect
-              label="Trip type"
-              value={filters.tripType}
-              onChange={setFilter("tripType")}
-              options={TRIP_TYPES.map((t) => ({ value: t, label: t }))}
-            />
-            <FilterSelect
-              label="Duration"
-              value={filters.duration}
-              onChange={setFilter("duration")}
-              options={DURATION_BANDS.map((b) => ({ value: b.id, label: b.label }))}
-            />
-            <FilterSelect
-              label="Grades"
-              value={filters.grade}
-              onChange={setFilter("grade")}
-              options={GRADE_BANDS.map((b) => ({ value: b.id, label: b.label }))}
-            />
-            <FilterSelect
-              label="Season"
-              value={filters.season}
-              onChange={setFilter("season")}
-              options={SEASONS.map((s) => ({ value: s, label: s }))}
-            />
-            <FilterSelect
-              label="State"
-              value={filters.state}
-              onChange={setFilter("state")}
-              options={STATES.map((s) => ({ value: s, label: s }))}
-            />
-            <FilterSelect
-              label="Budget"
-              value={filters.budget}
-              onChange={setFilter("budget")}
-              options={BUDGET_BANDS.map((b) => ({ value: b.id, label: b.label }))}
-            />
+            <button
+              type="button"
+              onClick={() => setFiltersExpanded((current) => !current)}
+              aria-expanded={filtersExpanded}
+              aria-controls="tour-filter-fields"
+              className={`flex shrink-0 cursor-pointer items-center gap-2 rounded-button border px-4 py-2.5 text-small font-medium transition-colors duration-200 ${
+                filtersExpanded
+                  ? "border-line bg-white text-brown hover:border-gray-400"
+                  : "border-forest bg-forest text-cream"
+              }`}
+            >
+              <SlidersHorizontal className="h-4 w-4" strokeWidth={1.5} />
+              Filters
+              {activeCount > 0 && (
+                <span
+                  className={`rounded-full px-1.5 py-0.5 text-[11px] font-semibold ${
+                    filtersExpanded ? "bg-beige text-brown" : "bg-cream/20 text-cream"
+                  }`}
+                >
+                  {activeCount}
+                </span>
+              )}
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                  filtersExpanded ? "rotate-180" : ""
+                }`}
+                strokeWidth={1.75}
+              />
+            </button>
           </div>
+
+          <AnimatePresence initial={false}>
+            {filtersExpanded && (
+              <motion.div
+                id="tour-filter-fields"
+                initial={prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                animate={
+                  prefersReducedMotion ? { opacity: 1 } : { height: "auto", opacity: 1 }
+                }
+                exit={prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: EASE }}
+                className="overflow-hidden"
+              >
+                <div className="flex flex-wrap items-end gap-x-4 gap-y-5 pt-1">
+                  <FilterSelect
+                    label="Destination"
+                    value={filters.destination}
+                    onChange={setFilter("destination")}
+                    options={DESTINATIONS.map((d) => ({ value: d, label: d }))}
+                  />
+                  <FilterSelect
+                    label="Trip type"
+                    value={filters.tripType}
+                    onChange={setFilter("tripType")}
+                    options={TRIP_TYPES.map((t) => ({ value: t, label: t }))}
+                  />
+                  <FilterSelect
+                    label="Duration"
+                    value={filters.duration}
+                    onChange={setFilter("duration")}
+                    options={DURATION_BANDS.map((b) => ({ value: b.id, label: b.label }))}
+                  />
+                  <FilterSelect
+                    label="Grades"
+                    value={filters.grade}
+                    onChange={setFilter("grade")}
+                    options={GRADE_BANDS.map((b) => ({ value: b.id, label: b.label }))}
+                  />
+                  <FilterSelect
+                    label="Season"
+                    value={filters.season}
+                    onChange={setFilter("season")}
+                    options={SEASONS.map((s) => ({ value: s, label: s }))}
+                  />
+                  <FilterSelect
+                    label="State"
+                    value={filters.state}
+                    onChange={setFilter("state")}
+                    options={STATES.map((s) => ({ value: s, label: s }))}
+                  />
+                  <FilterSelect
+                    label="Budget"
+                    value={filters.budget}
+                    onChange={setFilter("budget")}
+                    options={BUDGET_BANDS.map((b) => ({ value: b.id, label: b.label }))}
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <div className="flex items-center justify-between gap-4">
             <p className="flex items-center gap-2 text-small text-gray-500" role="status" aria-live="polite">

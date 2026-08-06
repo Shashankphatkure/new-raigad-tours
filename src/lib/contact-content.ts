@@ -1,38 +1,43 @@
 /**
  * Contact details and FAQ copy.
  *
- * Address, phone numbers, email and hours below are PLACEHOLDERS awaiting the
- * company's real details. Everything is centralised here so they can be
- * replaced in one place.
+ * Office address, phone and email are real. Everything is centralised here
+ * so it can be updated in one place.
  */
 
 export const OFFICE = {
   name: "Raigad Tours",
-  addressLines: ["Station Road", "Mahad, Raigad District", "Maharashtra 402301"],
+  addressLines: [
+    "Shop No. 13, Gurusharanam Complex",
+    "Vishrali Naka, Old Panvel",
+    "Maharashtra 410206",
+  ],
   phones: [
-    { label: "Enquiries", value: "+91 00000 00000", href: "tel:+910000000000" },
-    { label: "Bookings", value: "+91 00000 00001", href: "tel:+910000000001" },
+    {
+      label: "K.P. Chandrashekhar",
+      value: "+91 90046 61643",
+      href: "tel:+919004661643",
+    },
+    {
+      label: "K.P. Chandrashekhar",
+      value: "+91 79773 50412",
+      href: "tel:+917977350412",
+    },
+    {
+      label: "Rajeshwari C.",
+      value: "+91 83697 67072",
+      href: "tel:+918369767072",
+    },
   ],
-  email: "hello@raigadtours.example",
+  email: "raigadtours2004@gmail.com",
   whatsapp: {
-    display: "+91 00000 00000",
+    display: "+91 90046 61643",
     // wa.me expects the number in international format, digits only.
-    href: "https://wa.me/910000000000",
+    href: "https://wa.me/919004661643",
   },
-  emergency: {
-    label: "24-hour trip line",
-    value: "+91 00000 00002",
-    href: "tel:+910000000002",
-    note: "Staffed around the clock for the duration of every trip in progress.",
-  },
-  hours: [
-    { days: "Monday – Friday", time: "9:30 am – 6:30 pm" },
-    { days: "Saturday", time: "10:00 am – 4:00 pm" },
-    { days: "Sunday", time: "Closed" },
-  ],
   responseTime: "We reply to every enquiry within one working day.",
-  /** Placeholder map query — swap for the real address. */
-  mapQuery: "Mahad, Raigad, Maharashtra, India",
+  mapQuery:
+    "Gurusharanam Complex, Vishrali Naka, Old Panvel, Maharashtra 410206, India",
 };
 
 export const TRAVEL_MONTHS = [
@@ -87,6 +92,6 @@ export const CONTACT_FAQS = [
   {
     question: "What happens if a student falls ill during a trip?",
     answer:
-      "Every departure carries a qualified first-aider and a medical kit, and we identify the nearest hospital at each overnight stop before departure. The school is contacted immediately, and our 24-hour line stays open for the duration of the trip.",
+      "Every departure carries a qualified first-aider and a medical kit, and we identify the nearest hospital at each overnight stop before departure.",
   },
 ];

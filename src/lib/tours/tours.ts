@@ -12,7 +12,7 @@ const STANDARD_SAFETY = [
   "Two trained trip leaders for every twenty students",
   "Government-certified drivers and regularly serviced coaches",
   "Qualified first-aider and medical kit on every departure",
-  "24-hour emergency line open for the length of the trip",
+  "Direct contact line to the trip leader for the length of the trip",
   "Nearest hospital identified in advance at every overnight stop",
 ];
 

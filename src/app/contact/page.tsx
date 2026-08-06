@@ -1,12 +1,5 @@
 import type { Metadata } from "next";
-import {
-  AlertCircle,
-  Clock,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-} from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Nav } from "@/components/ui/Nav";
 import { Footer } from "@/components/ui/Footer";
 import { TrustPromo } from "@/components/ui/TrustPromo";
@@ -146,33 +139,9 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    {/* Hours */}
-                    <div className="flex gap-4">
-                      <Clock
-                        className="mt-1 h-5 w-5 shrink-0 text-forest"
-                        strokeWidth={1.5}
-                      />
-                      <div>
-                        <p className="text-small font-semibold uppercase tracking-[0.12em] text-gray-500">
-                          Business hours
-                        </p>
-                        <dl className="mt-2 flex flex-col gap-1">
-                          {OFFICE.hours.map((slot) => (
-                            <div key={slot.days} className="flex gap-3">
-                              <dt className="w-40 shrink-0 text-body text-brown">
-                                {slot.days}
-                              </dt>
-                              <dd className="text-body text-gray-600">
-                                {slot.time}
-                              </dd>
-                            </div>
-                          ))}
-                        </dl>
-                        <p className="mt-4 text-small text-gray-500">
-                          {OFFICE.responseTime}
-                        </p>
-                      </div>
-                    </div>
+                    <p className="text-small text-gray-500">
+                      {OFFICE.responseTime}
+                    </p>
                   </div>
 
                   {/* WhatsApp */}
@@ -195,23 +164,6 @@ export default function ContactPage() {
                       </p>
                     </div>
                   </a>
-
-                  {/* Emergency */}
-                  <div className="rounded-card border border-maroon/25 bg-white p-7">
-                    <p className="flex items-center gap-2 text-small font-semibold uppercase tracking-[0.12em] text-maroon">
-                      <AlertCircle className="h-4 w-4" strokeWidth={1.75} />
-                      {OFFICE.emergency.label}
-                    </p>
-                    <a
-                      href={OFFICE.emergency.href}
-                      className="mt-3 block font-display text-2xl text-brown transition-colors hover:text-maroon"
-                    >
-                      {OFFICE.emergency.value}
-                    </a>
-                    <p className="mt-3 text-small leading-relaxed text-gray-600">
-                      {OFFICE.emergency.note}
-                    </p>
-                  </div>
                 </div>
               </Reveal>
             </div>

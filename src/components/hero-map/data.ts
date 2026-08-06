@@ -5,8 +5,12 @@ const img = (base: string) => `${base}?w=1200&q=75&auto=format&fit=crop`;
 /**
  * Destination catalogue for the hero map.
  *
- * `point` is the pin position within MAP_VIEWBOX (1000x1100); `coordinates`
- * holds the real lat/lng, kept for future search/filter/real-map features.
+ * `point` is the pin position within MAP_VIEWBOX (1024x1024) — computed by
+ * linearly projecting each place's real `coordinates` onto the outline's
+ * bounding box and verifying the result lands inside the actual landmass
+ * (see map-geometry.ts for the outline's provenance). Not literal survey
+ * cartography, but genuinely derived from real coordinates rather than
+ * eyeballed.
  *
  * Trip copy is placeholder content pending real material from the booklet.
  */
@@ -26,7 +30,7 @@ export const DESTINATIONS: Destination[] = [
     imageAlt:
       "Crowd gathered in front of the Gateway of India stone monument in Mumbai",
     coordinates: { lat: 19.076, lng: 72.8777 },
-    point: { x: 322, y: 668 },
+    point: { x: 186.6, y: 650.1 },
   },
   {
     id: "pune",
@@ -43,7 +47,7 @@ export const DESTINATIONS: Destination[] = [
     imageAlt:
       "Indian flag waving beside the fortified walls of Shaniwar Wada in Pune",
     coordinates: { lat: 18.5204, lng: 73.8567 },
-    point: { x: 372, y: 660 },
+    point: { x: 218.8, y: 669.6 },
   },
   {
     id: "lonavala",
@@ -60,7 +64,7 @@ export const DESTINATIONS: Destination[] = [
     imageAlt:
       "Green hillside under a blue sky with white clouds at Lonavala hill station",
     coordinates: { lat: 18.7546, lng: 73.4062 },
-    point: { x: 352, y: 646 },
+    point: { x: 204, y: 661.4 },
   },
   {
     id: "matheran",
@@ -77,7 +81,7 @@ export const DESTINATIONS: Destination[] = [
     imageAlt:
       "Narrow-gauge railway tracks disappearing into misty forest at Matheran",
     coordinates: { lat: 18.9866, lng: 73.2707 },
-    point: { x: 338, y: 652 },
+    point: { x: 199.5, y: 653.2 },
   },
   {
     id: "mahabaleshwar",
@@ -94,7 +98,7 @@ export const DESTINATIONS: Destination[] = [
     imageAlt:
       "Green forested hills above a lake under an overcast sky in Mahabaleshwar",
     coordinates: { lat: 17.9307, lng: 73.6477 },
-    point: { x: 366, y: 700 },
+    point: { x: 211.9, y: 690.3 },
   },
   {
     id: "nashik",
@@ -110,7 +114,7 @@ export const DESTINATIONS: Destination[] = [
     image: img("https://images.unsplash.com/photo-1694667509674-676629c9d069"),
     imageAlt: "River running through the city of Nashik with buildings along the bank",
     coordinates: { lat: 19.9975, lng: 73.7898 },
-    point: { x: 366, y: 606 },
+    point: { x: 216.6, y: 617.8 },
   },
   {
     id: "ajanta-ellora",
@@ -127,7 +131,7 @@ export const DESTINATIONS: Destination[] = [
     imageAlt:
       "Rock-cut stone temple structures at the Ellora Caves with a green hillside behind",
     coordinates: { lat: 20.5519, lng: 75.7002 },
-    point: { x: 410, y: 596 },
+    point: { x: 279.5, y: 598.3 },
   },
   {
     id: "goa",
@@ -143,7 +147,7 @@ export const DESTINATIONS: Destination[] = [
     image: img("https://images.unsplash.com/photo-1515307638821-8c2ece10bf6a"),
     imageAlt: "Palm trees along the shoreline at Palolem Beach in Goa",
     coordinates: { lat: 15.2993, lng: 74.124 },
-    point: { x: 350, y: 762 },
+    point: { x: 227.6, y: 782.7 },
   },
   {
     id: "hyderabad",
@@ -160,7 +164,7 @@ export const DESTINATIONS: Destination[] = [
     imageAlt:
       "The Charminar monument with its four minarets above a busy market under a blue sky",
     coordinates: { lat: 17.385, lng: 78.4867 },
-    point: { x: 470, y: 714 },
+    point: { x: 371.2, y: 709.5 },
   },
   {
     id: "ahmedabad",
@@ -177,6 +181,6 @@ export const DESTINATIONS: Destination[] = [
     imageAlt:
       "Symmetrical carved stone pillars inside the Adalaj Stepwell in Gujarat",
     coordinates: { lat: 23.0225, lng: 72.5714 },
-    point: { x: 288, y: 470 },
+    point: { x: 186.5, y: 503.6 },
   },
 ];

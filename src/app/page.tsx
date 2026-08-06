@@ -39,7 +39,7 @@ const trustMarkers = [
   { icon: CalendarCheck, label: "Since 1998", tone: "text-saffron" },
   { icon: School, label: "500+ Schools Served", tone: "text-sky" },
   { icon: ShieldCheck, label: "Safety-First Protocol", tone: "text-cream" },
-  { icon: LifeBuoy, label: "24-Hour Trip Line", tone: "text-saffron" },
+  { icon: LifeBuoy, label: "Dedicated Trip Support", tone: "text-saffron" },
 ];
 
 const highlights = [
