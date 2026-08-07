@@ -450,7 +450,7 @@ export const TOURS: Tour[] = [
   {
     slug: "konkan-coast-ecology",
     title: "Konkan Coast & Fishing Villages",
-    destinationId: "goa",
+    destinationId: "old-goa",
     destination: "Konkan Coast",
     state: "Goa",
     tripType: "Educational Tour",

@@ -25,6 +25,10 @@
 *.pem
 Open Website.html
 
+# unrelated local tool logs (contain WhatsApp session/contact data)
+mcp-logs.txt
+wa-logs.txt
+
 # debug
 npm-debug.log*
 yarn-debug.log*

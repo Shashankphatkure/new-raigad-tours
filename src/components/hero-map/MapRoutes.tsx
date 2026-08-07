@@ -7,7 +7,12 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 type MapLandmassProps = {
   reducedMotion: boolean;
-  /** True once a region is zoomed into — gently recedes the rest of India. */
+  /**
+   * True once a region is zoomed into. India stays fully visible (a
+   * RegionFocus glow carries the "this area is selected" emphasis instead)
+   * — this only very slightly recedes the terrain so the focus glow and
+   * destination pins read as the foreground.
+   */
   dimmed?: boolean;
 };
 
@@ -15,7 +20,7 @@ type MapLandmassProps = {
 export function MapLandmass({ reducedMotion, dimmed = false }: MapLandmassProps) {
   return (
     <motion.g
-      animate={{ opacity: dimmed ? 0.55 : 1 }}
+      animate={{ opacity: dimmed ? 0.92 : 1 }}
       transition={{ duration: reducedMotion ? 0 : 0.75, ease: EASE }}
     >
       <motion.path

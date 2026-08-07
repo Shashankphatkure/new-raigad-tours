@@ -13,11 +13,12 @@ import { Breadcrumb } from "./Breadcrumb";
 import { Bus } from "./Bus";
 import { DestinationCard } from "./DestinationCard";
 import { DestinationPin } from "./DestinationPin";
-import { MapCamera, type CameraTarget } from "./MapCamera";
+import { useMapCamera, type CameraTarget } from "./MapCamera";
 import { MapLandmass, MapRoute } from "./MapRoutes";
+import { RegionFocus } from "./RegionFocus";
 import { RegionMarker } from "./RegionMarker";
 import { StateZoom } from "./StateZoom";
-import { INDIA_OUTLINE, MAP_VIEWBOX, buildRoutePath } from "./map-geometry";
+import { INDIA_OUTLINE, buildRoutePath } from "./map-geometry";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -30,7 +31,7 @@ const TIMING = {
 
 /** Milliseconds between clicking a region and its destinations fading in. */
 const REGION_EXPAND_MS = 150;
-const REGION_SETTLE_MS = 900;
+const REGION_SETTLE_MS = 950;
 
 type JourneyPhase = "idle" | "departing" | "driving" | "arrived";
 type Viewport = "mobile" | "tablet" | "desktop";
@@ -108,20 +109,20 @@ export function IndiaMap() {
     [activeDestId],
   );
 
-  /** On tablet the zoom is "slightly reduced"; on mobile the map never zooms in-place. */
-  const appliedScale = useMemo(() => {
-    if (!activeRegion) return 1;
-    if (viewport === "tablet") return Math.max(1.6, activeRegion.zoom.scale * 0.75);
-    return activeRegion.zoom.scale;
-  }, [activeRegion, viewport]);
-
   const isZoomedIn = Boolean(activeRegion) && viewport !== "mobile";
-  const counterScale = isZoomedIn ? 1 / appliedScale : 1;
 
+  /** On tablet the zoom is "slightly reduced"; on mobile the map never zooms in-place. */
   const cameraTarget: CameraTarget = useMemo(() => {
     if (!activeRegion || viewport === "mobile") return null;
-    return { cx: activeRegion.zoom.cx, cy: activeRegion.zoom.cy, scale: appliedScale };
-  }, [activeRegion, appliedScale, viewport]);
+    const zoom =
+      viewport === "tablet"
+        ? Math.max(1.3, activeRegion.zoom.zoom * 0.85)
+        : activeRegion.zoom.zoom;
+    return { cx: activeRegion.zoom.cx, cy: activeRegion.zoom.cy, zoom };
+  }, [activeRegion, viewport]);
+
+  const { viewBox, zoom: cameraZoom } = useMapCamera(cameraTarget, reducedMotion);
+  const counterScale = 1 / cameraZoom;
 
   /** Route runs from the active region's home point to the chosen destination. */
   const routePath = useMemo(() => {
@@ -282,8 +283,8 @@ export function IndiaMap() {
         />
 
         <svg
-          viewBox={`0 0 ${MAP_VIEWBOX.width} ${MAP_VIEWBOX.height}`}
-          className="h-auto w-full overflow-visible"
+          viewBox={viewBox}
+          className="h-auto w-full overflow-hidden"
           role="group"
           aria-label="Interactive map of India showing Raigad Tours destinations"
         >
@@ -293,57 +294,66 @@ export function IndiaMap() {
             </clipPath>
           </defs>
 
-          <MapCamera target={cameraTarget} reducedMotion={reducedMotion}>
-            <Ambience reducedMotion={reducedMotion} />
-            <MapLandmass reducedMotion={reducedMotion} dimmed={isZoomedIn} />
+          <Ambience reducedMotion={reducedMotion} />
+          <MapLandmass reducedMotion={reducedMotion} dimmed={isZoomedIn} />
 
-            {REGIONS.map((region) => (
-              <RegionMarker
-                key={region.id}
-                region={region}
-                visible={!activeRegion}
-                justClicked={region.id === justClickedId}
+          <AnimatePresence>
+            {isZoomedIn && activeRegion && (
+              <RegionFocus region={activeRegion} reducedMotion={reducedMotion} />
+            )}
+          </AnimatePresence>
+
+          {REGIONS.map((region) => (
+            <RegionMarker
+              key={region.id}
+              region={region}
+              visible={!activeRegion}
+              justClicked={region.id === justClickedId}
+              counterScale={counterScale}
+              reducedMotion={reducedMotion}
+              onSelect={selectRegion}
+            />
+          ))}
+
+          {/* Hidden path used purely for geometric measurement. */}
+          {routePath && (
+            <path ref={measurePathRef} d={routePath} fill="none" stroke="none" />
+          )}
+
+          {routePath && phase !== "idle" && (
+            <MapRoute
+              path={routePath}
+              journeyKey={journeyKey}
+              duration={TIMING.routeDraw}
+              reducedMotion={reducedMotion}
+            />
+          )}
+
+          {isZoomedIn &&
+            showDestinations &&
+            regionDestinations.map((destination, index) => (
+              <DestinationPin
+                key={destination.id}
+                destination={destination}
+                isActive={destination.id === activeDestId}
+                hasArrived={destination.id === activeDestId && phase === "arrived"}
                 reducedMotion={reducedMotion}
-                onSelect={selectRegion}
+                counterScale={counterScale}
+                delay={index * 0.07}
+                onSelect={handleSelectDestination}
               />
             ))}
 
-            {/* Hidden path used purely for geometric measurement. */}
-            {routePath && (
-              <path ref={measurePathRef} d={routePath} fill="none" stroke="none" />
-            )}
-
-            {routePath && phase !== "idle" && (
-              <MapRoute
-                path={routePath}
-                journeyKey={journeyKey}
-                duration={TIMING.routeDraw}
-                reducedMotion={reducedMotion}
-              />
-            )}
-
-            {isZoomedIn &&
-              showDestinations &&
-              regionDestinations.map((destination, index) => (
-                <DestinationPin
-                  key={destination.id}
-                  destination={destination}
-                  isActive={destination.id === activeDestId}
-                  hasArrived={destination.id === activeDestId && phase === "arrived"}
-                  reducedMotion={reducedMotion}
-                  counterScale={counterScale}
-                  delay={index * 0.07}
-                  onSelect={handleSelectDestination}
-                />
-              ))}
-
-            {/* ---------- Bus ---------- */}
+          {/* ---------- Bus ---------- */}
+          {/* Translate, rotate and scale are three nested groups (not one
+              combined `animate`) so their SVG composition order is
+              unambiguous: translate outermost, then rotate/scale. */}
+          <motion.g
+            animate={{ x: busPose.x, y: busPose.y }}
+            transition={phase === "driving" ? { duration: 0 } : busTransition}
+          >
             <motion.g
-              animate={{
-                x: busPose.x,
-                y: busPose.y,
-                rotate: busPose.angle,
-              }}
+              animate={{ rotate: busPose.angle }}
               transition={phase === "driving" ? { duration: 0 } : busTransition}
             >
               <motion.g
@@ -402,7 +412,7 @@ export function IndiaMap() {
                 </motion.g>
               </motion.g>
             </motion.g>
-          </MapCamera>
+          </motion.g>
         </svg>
 
         {/* Screen-reader narration of the journey state. */}

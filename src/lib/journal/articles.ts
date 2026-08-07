@@ -253,7 +253,7 @@ export const ARTICLES: Article[] = [
     isoDate: "2026-01-09",
     readingTime: 4,
     imageSlot: "coastal-village",
-    relatedJourneys: ["goa"],
+    relatedJourneys: ["fort-aguada"],
     body: [
       {
         type: "paragraph",
@@ -487,7 +487,7 @@ export const ARTICLES: Article[] = [
     isoDate: "2025-09-24",
     readingTime: 3,
     imageSlot: "coastal-village",
-    relatedJourneys: ["goa"],
+    relatedJourneys: ["fort-aguada"],
     body: [
       {
         type: "paragraph",

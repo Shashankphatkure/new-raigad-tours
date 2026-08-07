@@ -49,7 +49,7 @@ export type Region = {
   /** Where the collapsed regional marker sits before any zoom. */
   marker: MapPoint;
   /** Camera focal point + base (desktop) zoom level for this region. */
-  zoom: { cx: number; cy: number; scale: number };
+  zoom: { cx: number; cy: number; zoom: number };
   /** Where the bus waits once this region is zoomed into. */
   homePoint: MapPoint;
 };

@@ -9,20 +9,20 @@ const img = (base: string) => `${base}?w=1600&q=75&auto=format&fit=crop`;
 
 export const TOUR_IMAGES: Record<string, { src: string; alt: string }> = {
   "raigad-fort": {
-    src: img("https://images.unsplash.com/photo-1560756718-59609860409c"),
-    alt: "The valley below Raigad Fort in Maharashtra",
+    src: "/images/tours/raigad-fort.webp",
+    alt: "The misty ridge and fortifications of Raigad Fort in Maharashtra",
   },
   "monsoon-ghats": {
-    src: img("https://images.unsplash.com/photo-1776180040561-b0776ed2d3a7"),
-    alt: "Waterfalls cascading down mist-covered green mountainsides in the Western Ghats",
+    src: "/images/tours/monsoon-ghats.jpg",
+    alt: "A waterfall cascading down a rock face in the Western Ghats during the monsoon",
   },
   "cave-architecture": {
     src: img("https://images.unsplash.com/photo-1741207857655-d148b242178a"),
     alt: "A carved stone figure in the rock-cut Elephanta Caves, Maharashtra",
   },
   "coastal-village": {
-    src: img("https://images.unsplash.com/photo-1723158524575-60362d6e7d6f"),
-    alt: "Chinese fishing nets and moored wooden boats on the Kerala backwaters",
+    src: "/images/tours/coastal-village.avif",
+    alt: "A fishing village on the Konkan coast",
   },
   "stepwell-geometry": {
     src: img("https://images.unsplash.com/photo-1680476560161-781c71d85be4"),
