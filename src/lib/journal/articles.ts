@@ -83,7 +83,7 @@ export const ARTICLES: Article[] = [
     isoDate: "2026-02-28",
     readingTime: 7,
     imageSlot: "monsoon-ghats",
-    relatedJourneys: ["lonavala", "mahabaleshwar"],
+    relatedJourneys: ["mahabaleshwar", "raigad-fort"],
     body: [
       {
         type: "paragraph",
@@ -289,7 +289,7 @@ export const ARTICLES: Article[] = [
     isoDate: "2025-12-18",
     readingTime: 5,
     imageSlot: "students-notebook",
-    relatedJourneys: ["ajanta-ellora", "nashik"],
+    relatedJourneys: ["ajanta-ellora"],
     body: [
       {
         type: "paragraph",
@@ -457,7 +457,7 @@ export const ARTICLES: Article[] = [
     isoDate: "2025-10-08",
     readingTime: 4,
     imageSlot: "birds-wildlife",
-    relatedJourneys: ["lonavala", "matheran"],
+    relatedJourneys: ["mahabaleshwar"],
     body: [
       {
         type: "paragraph",

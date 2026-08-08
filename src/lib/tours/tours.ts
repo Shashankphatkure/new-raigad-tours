@@ -45,7 +45,7 @@ export const TOURS: Tour[] = [
   {
     slug: "raigad-fort-maratha-capital",
     title: "Raigad Fort & the Maratha Capital",
-    destinationId: "mumbai",
+    destinationId: "raigad-fort",
     destination: "Raigad",
     state: "Maharashtra",
     tripType: "Heritage Walk",
