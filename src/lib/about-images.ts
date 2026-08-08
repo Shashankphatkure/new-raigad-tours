@@ -34,16 +34,4 @@ export const ABOUT_IMAGES: Record<string, { src: string; alt: string }> = {
     src: img("https://images.unsplash.com/photo-1764032758859-634187751c5d"),
     alt: "Children gathered around display cases looking at museum exhibits",
   },
-  safety: {
-    src: img("https://images.unsplash.com/photo-1764072970350-2ce4f354a483"),
-    alt: "Adults supervising a group of children in bright safety vests on an outing beside a lake",
-  },
-  team: {
-    src: img("https://images.unsplash.com/photo-1760992003927-96ac55e57296"),
-    alt: "Three adults standing outdoors looking together at a tablet screen",
-  },
-  trust: {
-    src: img("https://images.unsplash.com/photo-1771577125646-b38ed7b14411"),
-    alt: "A man telling a story to a group of children sitting around him in a park",
-  },
 };

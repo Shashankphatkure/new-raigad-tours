@@ -52,7 +52,7 @@ export function StateZoom({ region, destinations, onClose }: StateZoomProps) {
         </button>
       </div>
 
-      <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 py-6">
+      <div className="flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden px-5 py-6">
         {destinations.map((destination) => {
           const matchingTour = TOURS.find(
             (tour) => tour.destinationId === destination.id,

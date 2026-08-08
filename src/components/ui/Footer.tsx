@@ -33,7 +33,7 @@ const COMPANY_LINKS = [
 
 const SUPPORT_LINKS = [
   { label: "Help Center", href: "#" },
-  { label: "Safety Information", href: "/about#safety" },
+  { label: "Safety Information", href: "#" },
   { label: "Cancellation Policy", href: "#" },
   { label: "Terms of Service", href: "#" },
   { label: "Privacy Policy", href: "#" },

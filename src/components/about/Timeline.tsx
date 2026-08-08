@@ -24,7 +24,7 @@ export function Timeline({ images }: TimelineProps) {
       <div
         role="tablist"
         aria-label="Company history by era"
-        className="relative flex gap-2 overflow-x-auto border-b border-line pb-0 sm:gap-0"
+        className="relative flex gap-2 overflow-x-auto overflow-y-hidden border-b border-line pb-0 sm:gap-0"
       >
         {TIMELINE.map((era, index) => {
           const isActive = index === activeIndex;
