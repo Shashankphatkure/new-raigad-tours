@@ -6,6 +6,7 @@ import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { EnquiryForm } from "@/components/contact/EnquiryForm";
+import { ContactBus } from "@/components/contact/ContactBus";
 import { ContactMap } from "@/components/contact/ContactMap";
 import { ContactFaq } from "@/components/contact/ContactFaq";
 import { OFFICE } from "@/lib/contact-content";
@@ -29,20 +30,26 @@ export default function ContactPage() {
         {/* ---------- Hero ---------- */}
         <section className="pt-16 md:pt-24">
           <Container>
-            <Reveal className="max-w-4xl">
-              <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                Get in Touch
-              </p>
-              <h1 className="mt-4 font-display text-h1 leading-[1.05] text-brown">
-                Let&apos;s Plan Your Next
-                <span className="block text-forest">Educational Journey.</span>
-              </h1>
-              <p className="mt-8 max-w-xl text-body leading-relaxed text-gray-600">
-                Tell us your group size, year level and rough dates. We will
-                come back with a costed itinerary — no obligation, and no
-                surcharges added later.
-              </p>
-            </Reveal>
+            <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[56fr_44fr] lg:gap-12">
+              {/* Sits above the coach's road, which overhangs this column. */}
+              <Reveal className="relative z-10">
+                <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
+                  Get in Touch
+                </p>
+                <h1 className="mt-4 font-display text-h1 leading-[1.05] text-brown">
+                  Let&apos;s Plan Your Next
+                  <span className="block text-forest">Educational Journey.</span>
+                </h1>
+                <p className="mt-8 max-w-xl text-body leading-relaxed text-gray-600">
+                  Tell us your group size, year level and rough dates. We will
+                  come back with a costed itinerary — no obligation, and no
+                  surcharges added later.
+                </p>
+              </Reveal>
+
+              {/* Kept outside Reveal: its opacity fade would flatten the 3D scene. */}
+              <ContactBus />
+            </div>
           </Container>
         </section>
 
