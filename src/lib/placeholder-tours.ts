@@ -1,8 +1,7 @@
 export const placeholderTours = [
   {
-    image:
-      "https://images.unsplash.com/photo-1663089553368-9df5eb1778ba?fm=jpg&q=60&w=800&auto=format&fit=crop",
-    imageAlt: "Lohagad hill fort in the Western Ghats, Maharashtra",
+    image: "/images/tours/raigad-fort.webp",
+    imageAlt: "The misty ridge and fortifications of Raigad Fort in Maharashtra",
     eyebrow: "Heritage Trek",
     title: "Raigad Fort & the Maratha Capital",
     meta: "2 Days · Moderate · Ages 10+",
@@ -10,9 +9,8 @@ export const placeholderTours = [
       "A guided climb to Shivaji Maharaj's hill capital, with a history session at the base village.",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1609775015123-e7573e73a7a7?fm=jpg&q=60&w=800&auto=format&fit=crop",
-    imageAlt: "Waterfall in a monsoon forest in the Western Ghats",
+    image: "/images/tours/monsoon-ghats.jpg",
+    imageAlt: "A waterfall cascading down a rock face in the Western Ghats during the monsoon",
     eyebrow: "Nature Expedition",
     title: "Sahyadri Monsoon Trail",
     meta: "3 Days · Easy · Family",
@@ -20,9 +18,8 @@ export const placeholderTours = [
       "Waterfalls, endemic flora, and a naturalist-led walk through the Western Ghats.",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1722230360984-2b0581aef534?fm=jpg&q=60&w=800&auto=format&fit=crop",
-    imageAlt: "A child interacting with an interactive display at a museum exhibit",
+    image: "/images/tours/coastal-village.avif",
+    imageAlt: "A fishing village on the Konkan coast",
     eyebrow: "Educational Tour",
     title: "Konkan Coast & Fishing Villages",
     meta: "4 Days · Easy · School Groups",

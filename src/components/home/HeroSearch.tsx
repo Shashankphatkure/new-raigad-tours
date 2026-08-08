@@ -32,7 +32,6 @@ const DESTINATIONS = Array.from(new Set(TOURS.map((t) => t.destination))).sort()
 const QUICK_PICKS = [
   { label: "Heritage Walks", tripType: "Heritage Walk" },
   { label: "Science Tours", tripType: "Science Tour" },
-  { label: "Nature Camps", tripType: "Nature Camp" },
   { label: "Industrial Visits", tripType: "Industrial Visit" },
 ];
 

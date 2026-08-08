@@ -43,11 +43,6 @@ const COLLECTIONS: { type: TripType; title: string; blurb: string }[] = [
     title: "Science Tours",
     blurb: "Hands-on centres, planetariums and observatories.",
   },
-  {
-    type: "Nature Camp",
-    title: "Nature Camps",
-    blurb: "Field ecology in the Ghats, measured by the students themselves.",
-  },
 ];
 
 export default function ToursPage() {

@@ -2,7 +2,6 @@ export const TRIP_TYPES = [
   "Heritage Walk",
   "Science Tour",
   "Industrial Visit",
-  "Nature Camp",
   "Weekend Trip",
   "Educational Tour",
 ] as const;
