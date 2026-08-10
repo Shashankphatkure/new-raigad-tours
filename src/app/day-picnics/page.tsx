@@ -195,7 +195,7 @@ export default function DayPicnicsPage() {
           <Container>
             <SectionHeading eyebrow="In the Field" title="A Few Real Places" />
             <p className="-mt-4 mb-16 max-w-xl text-body leading-relaxed text-gray-600">
-              Genuine photography of four destinations on our tariff — see
+              A closer look at four of the destinations on our tariff — see
               each listing above for the rest.
             </p>
             <PhotoStory />

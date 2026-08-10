@@ -4,12 +4,12 @@ import { Reveal } from "@/components/ui/Reveal";
 
 type Frame = { id: string; caption: string };
 
-/** Editorial gallery built from the four venues with genuine, identifiable photography. */
+/** A curated selection from the real venue photography — see the full destination grid for the rest. */
 const FRAMES: Frame[] = [
   { id: "imagica", caption: "Imagica, Khopoli" },
-  { id: "suraj-waterpark", caption: "Suraj Waterpark, Thane" },
+  { id: "kidzania", caption: "KidZania, Ghatkopar" },
   { id: "saguna-baug", caption: "Saguna Baug, Neral" },
-  { id: "essel-world-water-kingdom", caption: "Water Kingdom, EsselWorld" },
+  { id: "wet-n-joy-waterpark", caption: "Wet N Joy, Lonavala" },
 ];
 
 function Frame({ id, caption, aspect }: Frame & { aspect: string }) {
