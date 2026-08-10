@@ -153,7 +153,6 @@ export function Footer() {
           <p className="text-small font-semibold uppercase tracking-[0.1em] text-forest">
             Destinations
           </p>
-          <p className="text-small text-gray-500">Explore top journeys</p>
           {DESTINATION_LINKS.map((destination) => (
             <Link
               key={destination}
@@ -169,7 +168,6 @@ export function Footer() {
           <p className="text-small font-semibold uppercase tracking-[0.1em] text-forest">
             Explore
           </p>
-          <p className="text-small text-gray-500">Discover more</p>
           {EXPLORE_LINKS.map((link) => (
             <Link
               key={link.label}
@@ -185,7 +183,6 @@ export function Footer() {
           <p className="text-small font-semibold uppercase tracking-[0.1em] text-forest">
             Company
           </p>
-          <p className="text-small text-gray-500">Learn about us</p>
           {COMPANY_LINKS.map((link) => (
             <Link
               key={link.label}
@@ -201,7 +198,6 @@ export function Footer() {
           <p className="text-small font-semibold uppercase tracking-[0.1em] text-forest">
             Support
           </p>
-          <p className="text-small text-gray-500">We&apos;re here to help</p>
           {SUPPORT_LINKS.map((link) => (
             <Link
               key={link.label}
