@@ -6,20 +6,10 @@ import { FacebookIcon, InstagramIcon, YoutubeIcon } from "./SocialIcons";
 import { OFFICE } from "@/lib/contact-content";
 
 /** A representative slice of destinations, each deep-linking into the Tours filter. */
-const DESTINATION_LINKS = [
-  "Raigad",
-  "Lonavala & the Ghats",
-  "Ajanta & Ellora",
-  "Konkan Coast",
-  "Hyderabad",
-  "Ahmedabad",
-  "Mahabaleshwar",
-  "Mumbai",
-];
+const DESTINATION_LINKS = ["Raigad"];
 
 const EXPLORE_LINKS = [
   { label: "All Journeys", href: "/tours" },
-  { label: "The Journal", href: "/journal" },
   { label: "Interactive Map", href: "/#explore-india" },
   { label: "Plan a Custom Trip", href: "/contact" },
 ];
@@ -79,7 +69,7 @@ export function Footer() {
               Get travel stories &amp; teaching resources
             </h2>
             <p className="mt-2 text-small text-gray-600">
-              Join the educators who receive our monthly Journal digest.
+              Join the educators who receive our monthly travel digest.
             </p>
           </div>
 

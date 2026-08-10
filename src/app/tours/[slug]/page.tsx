@@ -24,7 +24,7 @@ import { Accordion } from "@/components/ui/Accordion";
 import { ParallaxHero } from "@/components/tours/ParallaxHero";
 import { ItineraryTimeline } from "@/components/tours/ItineraryTimeline";
 import { TourCard } from "@/components/tours/TourCard";
-import { ArticleMap } from "@/components/journal/ArticleMap";
+import { ArticleMap } from "@/components/tours/ArticleMap";
 import { TOURS, getRelatedTours, getTour } from "@/lib/tours/tours";
 import { TOUR_IMAGES } from "@/lib/tours/images";
 

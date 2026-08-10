@@ -9,7 +9,6 @@ const links = [
   { label: "Tours", href: "/tours" },
   { label: "Day Picnics", href: "/day-picnics" },
   { label: "About", href: "/about" },
-  { label: "Journal", href: "/journal" },
   { label: "Contact", href: "/contact" },
 ];
 
