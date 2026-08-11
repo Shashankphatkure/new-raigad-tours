@@ -3,15 +3,12 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
-  BedDouble,
-  Bus,
   CalendarRange,
   Check,
   Clock,
   GraduationCap,
   MapPin,
   ShieldCheck,
-  UtensilsCrossed,
 } from "lucide-react";
 import Link from "next/link";
 import { Nav } from "@/components/ui/Nav";
@@ -22,17 +19,25 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Accordion } from "@/components/ui/Accordion";
 import { ParallaxHero } from "@/components/tours/ParallaxHero";
-import { ItineraryTimeline } from "@/components/tours/ItineraryTimeline";
 import { TourCard } from "@/components/tours/TourCard";
 import { ArticleMap } from "@/components/tours/ArticleMap";
 import { TOURS, getRelatedTours, getTour } from "@/lib/tours/tours";
 import { TOUR_IMAGES } from "@/lib/tours/images";
 
-const inr = new Intl.NumberFormat("en-IN", {
-  style: "currency",
-  currency: "INR",
-  maximumFractionDigits: 0,
-});
+/** Commitments that apply to every departure — company-wide, not destination-specific. */
+const SAFETY_COMMITMENTS = [
+  "Two trained trip leaders for every twenty students",
+  "Experienced drivers and regularly serviced coaches",
+  "Qualified first-aider and medical kit on every departure",
+  "Direct contact line to the trip leader for the length of the trip",
+];
+
+const TEACHER_INFO = [
+  "Accompanying staff travel free at your school's required ratio",
+  "Consent pack, medical declaration forms and itinerary documentation supplied",
+  "Pre-departure briefing call with your trip leader",
+  "Daily written check-in with the school throughout the trip",
+];
 
 export function generateStaticParams() {
   return TOURS.map((tour) => ({ slug: tour.slug }));
@@ -59,12 +64,6 @@ export default async function TourDetailPage(props: PageProps<"/tours/[slug]">) 
 
   const heroImage = TOUR_IMAGES[tour.imageSlot];
   const related = getRelatedTours(tour);
-
-  const logistics = [
-    { icon: Bus, label: "Transport", value: tour.transport },
-    { icon: UtensilsCrossed, label: "Meals", value: tour.meals },
-    { icon: BedDouble, label: "Accommodation", value: tour.accommodation },
-  ];
 
   return (
     <>
@@ -107,11 +106,6 @@ export default async function TourDetailPage(props: PageProps<"/tours/[slug]">) 
                 <CalendarRange className="h-4 w-4" strokeWidth={1.5} />
                 {tour.seasons.join(" · ")}
               </span>
-              <span className="text-cream">
-                from{" "}
-                <span className="font-medium">{inr.format(tour.priceFrom)}</span>{" "}
-                per student
-              </span>
             </div>
           </Container>
         </ParallaxHero>
@@ -147,6 +141,15 @@ export default async function TourDetailPage(props: PageProps<"/tours/[slug]">) 
                     ))}
                   </ul>
                 </div>
+
+                <div className="mt-12 rounded-card bg-beige p-8">
+                  <p className="text-small font-semibold uppercase tracking-[0.12em] text-gray-500">
+                    What students take home
+                  </p>
+                  <p className="mt-3 text-body leading-relaxed text-brown">
+                    {tour.educationalValue}
+                  </p>
+                </div>
               </Reveal>
 
               <Reveal delay={0.12}>
@@ -160,64 +163,20 @@ export default async function TourDetailPage(props: PageProps<"/tours/[slug]">) 
                       {tour.bestSeason}
                     </p>
                   </div>
+                  <div className="border-t border-line pt-6">
+                    <p className="text-small font-semibold uppercase tracking-[0.12em] text-gray-500">
+                      Itinerary &amp; pricing
+                    </p>
+                    <p className="mt-3 text-body leading-relaxed text-brown">
+                      Shaped around your group size and dates — enquire and
+                      we&apos;ll send a costed itinerary.
+                    </p>
+                  </div>
                   <Button href="/contact" variant="primary">
                     Enquire About This Journey
                   </Button>
                 </div>
               </Reveal>
-            </div>
-          </Container>
-        </section>
-
-        {/* ---------- Itinerary ---------- */}
-        <section className="bg-beige py-30">
-          <Container>
-            <div className="grid grid-cols-1 gap-14 lg:grid-cols-[35fr_65fr] lg:gap-20">
-              <Reveal>
-                <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                  Day by day
-                </p>
-                <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
-                  The itinerary
-                </h2>
-                <p className="mt-6 text-body leading-relaxed text-gray-600">
-                  Select a day to see what it holds. Most schools adjust at
-                  least one element — tell us what you need.
-                </p>
-              </Reveal>
-
-              <Reveal delay={0.12}>
-                <ItineraryTimeline days={tour.itinerary} />
-              </Reveal>
-            </div>
-          </Container>
-        </section>
-
-        {/* ---------- Learning outcomes ---------- */}
-        <section className="py-30">
-          <Container>
-            <Reveal className="mb-12 max-w-2xl">
-              <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                What Students Take Home
-              </p>
-              <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
-                Learning outcomes
-              </h2>
-            </Reveal>
-
-            <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-              {tour.learningOutcomes.map((outcome, index) => (
-                <Reveal key={outcome} delay={index * 0.08}>
-                  <div className="border-t border-line pt-6">
-                    <span className="font-display text-h3 text-saffron">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <p className="mt-4 text-body leading-relaxed text-gray-600">
-                      {outcome}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
             </div>
           </Container>
         </section>
@@ -257,36 +216,6 @@ export default async function TourDetailPage(props: PageProps<"/tours/[slug]">) 
           </Container>
         </section>
 
-        {/* ---------- Logistics ---------- */}
-        <section className="bg-beige py-30">
-          <Container>
-            <Reveal className="mb-12 max-w-2xl">
-              <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                The Practical Detail
-              </p>
-              <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
-                Transport, meals &amp; accommodation
-              </h2>
-            </Reveal>
-
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-              {logistics.map(({ icon: Icon, label, value }, index) => (
-                <Reveal key={label} delay={index * 0.08}>
-                  <div className="h-full rounded-card bg-white p-8 shadow-soft">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-beige">
-                      <Icon className="h-5 w-5 text-forest" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="mt-6 font-display text-2xl text-brown">{label}</h3>
-                    <p className="mt-4 text-small leading-relaxed text-gray-600">
-                      {value}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </Container>
-        </section>
-
         {/* ---------- Safety & teacher info ---------- */}
         <section className="py-30">
           <Container>
@@ -300,7 +229,7 @@ export default async function TourDetailPage(props: PageProps<"/tours/[slug]">) 
                   On every departure
                 </h2>
                 <ul className="mt-8 flex flex-col gap-4">
-                  {tour.safety.map((item) => (
+                  {SAFETY_COMMITMENTS.map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <Check
                         className="mt-1 h-4 w-4 shrink-0 text-forest"
@@ -321,7 +250,7 @@ export default async function TourDetailPage(props: PageProps<"/tours/[slug]">) 
                   What we handle
                 </h2>
                 <ul className="mt-8 flex flex-col gap-4">
-                  {tour.teacherInfo.map((item) => (
+                  {TEACHER_INFO.map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <Check
                         className="mt-1 h-4 w-4 shrink-0 text-forest"

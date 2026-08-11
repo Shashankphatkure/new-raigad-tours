@@ -109,7 +109,7 @@ export default function ToursPage() {
             <div className="grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
               {POPULAR_TOURS.map((tour, index) => (
                 <Reveal key={tour.slug} delay={index * 0.08}>
-                  <TourCard tour={tour} showPrice={false} />
+                  <TourCard tour={tour} />
                 </Reveal>
               ))}
             </div>

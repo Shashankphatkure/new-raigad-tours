@@ -6,13 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ChevronDown, Search, SlidersHorizontal, X } from "lucide-react";
 import { TourCard } from "./TourCard";
 import { TOURS } from "@/lib/tours/tours";
-import {
-  BUDGET_BANDS,
-  DURATION_BANDS,
-  GRADE_BANDS,
-  SEASONS,
-  TRIP_TYPES,
-} from "@/lib/tours/types";
+import { DURATION_BANDS, GRADE_BANDS, SEASONS, TRIP_TYPES } from "@/lib/tours/types";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const ANY = "any";
@@ -27,7 +21,6 @@ type Filters = {
   grade: string;
   season: string;
   state: string;
-  budget: string;
 };
 
 const EMPTY_FILTERS: Filters = {
@@ -37,7 +30,6 @@ const EMPTY_FILTERS: Filters = {
   grade: ANY,
   season: ANY,
   state: ANY,
-  budget: ANY,
 };
 
 /** Compact labelled <select>, styled to read as part of the filter rail. */
@@ -93,7 +85,6 @@ export function ToursBrowser() {
     grade: searchParams.get("grade") ?? ANY,
     season: searchParams.get("season") ?? ANY,
     state: searchParams.get("state") ?? ANY,
-    budget: searchParams.get("budget") ?? ANY,
   }));
 
   const setFilter = (key: keyof Filters) => (value: string) =>
@@ -124,12 +115,6 @@ export function ToursBrowser() {
         const band = GRADE_BANDS.find((b) => b.id === filters.grade);
         // Keep a tour if its grade range overlaps the selected band at all.
         if (band && (tour.gradeMax < band.min || tour.gradeMin > band.max))
-          return false;
-      }
-
-      if (filters.budget !== ANY) {
-        const band = BUDGET_BANDS.find((b) => b.id === filters.budget);
-        if (band && (tour.priceFrom < band.min || tour.priceFrom > band.max))
           return false;
       }
 
@@ -261,12 +246,6 @@ export function ToursBrowser() {
                     value={filters.state}
                     onChange={setFilter("state")}
                     options={STATES.map((s) => ({ value: s, label: s }))}
-                  />
-                  <FilterSelect
-                    label="Budget"
-                    value={filters.budget}
-                    onChange={setFilter("budget")}
-                    options={BUDGET_BANDS.map((b) => ({ value: b.id, label: b.label }))}
                   />
                 </div>
               </motion.div>

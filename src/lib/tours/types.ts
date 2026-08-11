@@ -20,21 +20,8 @@ export const GRADE_BANDS = [
   { id: "senior", label: "Grades 10–12", min: 10, max: 12 },
 ] as const;
 
-export const BUDGET_BANDS = [
-  { id: "value", label: "Under ₹5,000", min: 0, max: 4999 },
-  { id: "mid", label: "₹5,000 – ₹9,999", min: 5000, max: 9999 },
-  { id: "premium", label: "₹10,000+", min: 10000, max: Number.MAX_SAFE_INTEGER },
-] as const;
-
 export type TripType = (typeof TRIP_TYPES)[number];
 export type Season = (typeof SEASONS)[number];
-
-export type ItineraryDay = {
-  day: string;
-  title: string;
-  description: string;
-  activities: string[];
-};
 
 export type Tour = {
   slug: string;
@@ -44,6 +31,7 @@ export type Tour = {
   destination: string;
   state: string;
   tripType: TripType;
+  /** Indicative trip length, for filtering and display — not a fixed itinerary. */
   durationDays: number;
   durationLabel: string;
   gradeMin: number;
@@ -51,23 +39,12 @@ export type Tour = {
   gradesLabel: string;
   seasons: Season[];
   bestSeason: string;
-  /** Indicative per-student cost in INR. */
-  priceFrom: number;
   standfirst: string;
   overview: string;
   highlights: string[];
   educationalValue: string;
-  /** Three-line summary revealed on card hover. */
-  shortItinerary: string[];
-  itinerary: ItineraryDay[];
-  learningOutcomes: string[];
   imageSlot: string;
   gallerySlots: string[];
-  safety: string[];
-  transport: string;
-  meals: string;
-  accommodation: string;
-  teacherInfo: string[];
   faqs: { question: string; answer: string }[];
   featured?: boolean;
   popular?: boolean;

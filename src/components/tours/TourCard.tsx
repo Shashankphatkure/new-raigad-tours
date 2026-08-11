@@ -4,20 +4,12 @@ import { ArrowRight, Clock, GraduationCap, MapPin } from "lucide-react";
 import { TOUR_IMAGES } from "@/lib/tours/images";
 import type { Tour } from "@/lib/tours/types";
 
-const inr = new Intl.NumberFormat("en-IN", {
-  style: "currency",
-  currency: "INR",
-  maximumFractionDigits: 0,
-});
-
 type TourCardProps = {
   tour: Tour;
-  /** Show the indicative per-student price. */
-  showPrice?: boolean;
   priority?: boolean;
 };
 
-export function TourCard({ tour, showPrice = true, priority = false }: TourCardProps) {
+export function TourCard({ tour, priority = false }: TourCardProps) {
   const image = TOUR_IMAGES[tour.imageSlot];
 
   return (
@@ -104,14 +96,7 @@ export function TourCard({ tour, showPrice = true, priority = false }: TourCardP
                 strokeWidth={1.75}
               />
             </span>
-            {showPrice && (
-              <span className="text-small text-gray-500">
-                from{" "}
-                <span className="font-medium text-brown">
-                  {inr.format(tour.priceFrom)}
-                </span>
-              </span>
-            )}
+            <span className="text-small text-gray-500">Enquire for pricing</span>
           </div>
         </div>
       </Link>

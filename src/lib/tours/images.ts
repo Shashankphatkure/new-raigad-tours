@@ -24,6 +24,10 @@ export const TOUR_IMAGES: Record<string, { src: string; alt: string }> = {
     src: "/images/tours/coastal-village.avif",
     alt: "A fishing village on the Konkan coast",
   },
+  "old-goa": {
+    src: "/images/goa/old-goa.jpg",
+    alt: "The ornate Baroque stone facade of the Basilica of Bom Jesus in Old Goa",
+  },
   "stepwell-geometry": {
     src: img("https://images.unsplash.com/photo-1680476560161-781c71d85be4"),
     alt: "Carved pillars and descending stone steps inside the Adalaj Stepwell, Gujarat",
