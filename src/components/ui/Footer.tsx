@@ -1,32 +1,20 @@
 import Link from "next/link";
-import { Mail, Phone, Send, X } from "lucide-react";
+import { X } from "lucide-react";
 import { Container } from "./Container";
 import { Button } from "./Button";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "./SocialIcons";
 import { OFFICE } from "@/lib/contact-content";
 
-/** A representative slice of destinations, each deep-linking into the Tours filter. */
-const DESTINATION_LINKS = ["Raigad"];
-
 const EXPLORE_LINKS = [
-  { label: "All Journeys", href: "/tours" },
-  { label: "Interactive Map", href: "/#explore-india" },
-  { label: "Plan a Custom Trip", href: "/contact" },
-];
-
-const COMPANY_LINKS = [
+  { label: "Tours", href: "/tours" },
   { label: "About Us", href: "/about" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Careers", href: "#" },
-  { label: "Press & Media", href: "#" },
+  { label: "School Picnics", href: "/school-picnics" },
+  { label: "Contact", href: "/contact" },
 ];
 
-const SUPPORT_LINKS = [
-  { label: "Help Center", href: "#" },
-  { label: "Safety Information", href: "#" },
-  { label: "Cancellation Policy", href: "#" },
-  { label: "Terms of Service", href: "#" },
-  { label: "Privacy Policy", href: "#" },
+const PLAN_LINKS = [
+  { label: "Enquire", href: "/contact" },
+  { label: "Plan a School Trip", href: "/school-picnics#enquiry" },
 ];
 
 // No real accounts yet — Raigad Tours currently has no social media presence.
@@ -57,83 +45,31 @@ export function Footer() {
         </Container>
       </div>
 
-      {/* Newsletter band */}
+      {/* CTA band */}
       <div className="border-b border-line bg-beige">
         <Container className="flex flex-col gap-6 py-10 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-button bg-white px-3 py-1.5 text-small font-semibold text-forest shadow-soft">
-              <Send className="h-3.5 w-3.5" strokeWidth={1.75} />
-              Newsletter
-            </span>
-            <h2 className="mt-4 font-display text-h3 leading-tight text-brown">
-              Get travel stories &amp; teaching resources
+            <h2 className="font-display text-h3 leading-tight text-brown">
+              Planning Your Next School Journey?
             </h2>
             <p className="mt-2 text-small text-gray-600">
-              Join the educators who receive our monthly travel digest.
+              Let&apos;s plan it together.
             </p>
           </div>
-
-          <form
-            className="flex w-full flex-col gap-3 sm:flex-row lg:w-auto"
-            aria-label="Newsletter signup"
-          >
-            <label htmlFor="footer-newsletter-email" className="sr-only">
-              Your email address
-            </label>
-            <input
-              id="footer-newsletter-email"
-              type="email"
-              required
-              placeholder="Enter your email"
-              className="w-full rounded-button border border-line bg-white px-5 py-3.5 text-small text-brown placeholder:text-gray-500 focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest sm:w-72"
-            />
-            <Button type="submit" variant="primary" className="shrink-0">
-              Subscribe
-            </Button>
-          </form>
+          <Button href="/contact" variant="primary" className="shrink-0">
+            Start an Enquiry →
+          </Button>
         </Container>
       </div>
 
       {/* Main link grid */}
-      <Container className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-6 lg:gap-8">
+      <Container className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
         <div className="flex flex-col gap-6 lg:col-span-2">
           <p className="max-w-xs text-small leading-relaxed text-gray-600">
-            Educational and heritage travel across the Sahyadris — guided
-            treks, coastal expeditions, and school programs rooted in local
-            history and nature.
+            Educational and group journeys across Maharashtra and beyond,
+            creating experiences where travel, discovery and learning come
+            together.
           </p>
-
-          <div className="flex flex-col gap-3">
-            <a
-              href={OFFICE.phones[0].href}
-              className="flex items-center gap-3 rounded-button border border-line px-4 py-3 transition-colors duration-200 hover:border-forest"
-            >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-beige">
-                <Phone className="h-4 w-4 text-forest" strokeWidth={1.5} />
-              </span>
-              <span>
-                <span className="block text-small text-gray-500">Call us</span>
-                <span className="block text-small font-medium text-brown">
-                  {OFFICE.phones[0].value}
-                </span>
-              </span>
-            </a>
-
-            <a
-              href={`mailto:${OFFICE.email}`}
-              className="flex items-center gap-3 rounded-button border border-line px-4 py-3 transition-colors duration-200 hover:border-forest"
-            >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-beige">
-                <Mail className="h-4 w-4 text-forest" strokeWidth={1.5} />
-              </span>
-              <span>
-                <span className="block text-small text-gray-500">Email us</span>
-                <span className="block text-small font-medium text-brown">
-                  {OFFICE.email}
-                </span>
-              </span>
-            </a>
-          </div>
 
           <div className="flex gap-2">
             {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
@@ -147,21 +83,6 @@ export function Footer() {
               </a>
             ))}
           </div>
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <p className="text-small font-semibold uppercase tracking-[0.1em] text-forest">
-            Destinations
-          </p>
-          {DESTINATION_LINKS.map((destination) => (
-            <Link
-              key={destination}
-              href={`/tours?destination=${encodeURIComponent(destination)}`}
-              className="text-small text-gray-600 transition-colors duration-200 hover:text-forest"
-            >
-              Tours in {destination}
-            </Link>
-          ))}
         </div>
 
         <div className="flex flex-col gap-3">
@@ -181,9 +102,9 @@ export function Footer() {
 
         <div className="flex flex-col gap-3">
           <p className="text-small font-semibold uppercase tracking-[0.1em] text-forest">
-            Company
+            Plan
           </p>
-          {COMPANY_LINKS.map((link) => (
+          {PLAN_LINKS.map((link) => (
             <Link
               key={link.label}
               href={link.href}
@@ -194,19 +115,38 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-4">
           <p className="text-small font-semibold uppercase tracking-[0.1em] text-forest">
-            Support
+            Contact
           </p>
-          {SUPPORT_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
+          <div>
+            <p className="text-small text-gray-500">Phone</p>
+            <a
+              href={OFFICE.phones[0].href}
               className="text-small text-gray-600 transition-colors duration-200 hover:text-forest"
             >
-              {link.label}
-            </Link>
-          ))}
+              {OFFICE.phones[0].value}
+            </a>
+          </div>
+          <div>
+            <p className="text-small text-gray-500">Email</p>
+            <a
+              href={`mailto:${OFFICE.email}`}
+              className="text-small text-gray-600 transition-colors duration-200 hover:text-forest"
+            >
+              {OFFICE.email}
+            </a>
+          </div>
+          <div>
+            <p className="text-small text-gray-500">Office</p>
+            <address className="not-italic text-small leading-relaxed text-gray-600">
+              {OFFICE.addressLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </address>
+          </div>
         </div>
       </Container>
 
@@ -218,14 +158,6 @@ export function Footer() {
             {new Date().getFullYear()} Raigad Tours. All rights reserved.
           </p>
           <p className="flex items-center gap-4">
-            <Link href="#" className="transition-colors hover:text-forest">
-              Privacy Policy
-            </Link>
-            <span aria-hidden>·</span>
-            <Link href="#" className="transition-colors hover:text-forest">
-              Terms of Use
-            </Link>
-            <span aria-hidden>·</span>
             <Link href="/contact" className="transition-colors hover:text-forest">
               Contact
             </Link>

@@ -65,9 +65,9 @@ export default function ToursPage() {
               </h1>
               <p className="mt-8 max-w-xl text-body leading-relaxed text-gray-600">
                 Educational travel works when the place does the teaching. Every
-                journey below pairs a site with a specialist, a measurable
-                exercise, and a reason for students to still be arguing about it
-                on the coach home.
+                journey below is built around a clear destination, a
+                measurable exercise, and a reason for students to still be
+                arguing about it on the coach home.
               </p>
             </Reveal>
           </Container>

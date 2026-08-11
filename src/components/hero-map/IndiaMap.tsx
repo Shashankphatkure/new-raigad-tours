@@ -461,15 +461,14 @@ export function IndiaMap({ regionIds }: IndiaMapProps = {}) {
               className="rounded-image border border-line bg-white/60 p-8 sm:p-10"
             >
               <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                Since 1998
+                Explore
               </p>
               <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
-                Learning Beyond Classrooms
+                Plan Your Next Journey
               </h2>
               <p className="mt-5 text-body leading-relaxed text-gray-600">
-                Choose a region on the map to zoom in — every stop inside it is
-                a guided, curriculum-linked journey designed for school groups
-                across India.
+                Choose a region on the map to see the destinations we take
+                school and group trips to.
               </p>
               <p className="mt-6 text-small text-gray-500">
                 Tap any region to begin.

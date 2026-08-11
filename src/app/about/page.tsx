@@ -68,11 +68,9 @@ export default function AboutPage() {
                   </span>
                 </h1>
                 <p className="mt-8 max-w-xl text-body leading-relaxed text-cream/85">
-                  What began with a passion for Maharashtra&apos;s heritage has
-                  grown into journeys that take schools and groups beyond the
-                  classroom. From educational day picnics to destinations
-                  across India, Raigad Tours creates experiences where travel,
-                  discovery and learning come together.
+                  Since 1998, Raigad Tours has planned educational and group
+                  journeys for schools — from one-day picnics to destinations
+                  across Maharashtra and India.
                 </p>
               </div>
             </Reveal>
@@ -115,24 +113,19 @@ export default function AboutPage() {
 
               <Reveal delay={0.12}>
                 <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                  Since 1998
+                  Our Journey
                 </p>
                 <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
-                  Where travel, discovery and learning come together
+                  A Journey That Began in 1998
                 </h2>
                 <div className="mt-8 flex flex-col gap-5 text-body leading-relaxed text-gray-600">
                   <p>
-                    Every trip starts the same way — a place worth learning
-                    from, and a plan built around getting a school group there
-                    safely, comfortably and on schedule. Coaches, itineraries,
-                    meals and permissions are ours to manage, so teachers can
-                    focus on the group.
-                  </p>
-                  <p>
-                    Today that means everything from one-day school picnics
-                    near Mumbai and Thane to multi-day educational tours across
-                    Maharashtra, Goa, Gujarat and Telangana — each one planned
-                    around a place that has something real to teach.
+                    What began with a passion for Maharashtra&apos;s heritage
+                    has grown into journeys that take schools and groups
+                    beyond the classroom. From educational day picnics to
+                    destinations across India, Raigad Tours creates
+                    experiences where travel, discovery and learning come
+                    together.
                   </p>
                 </div>
               </Reveal>

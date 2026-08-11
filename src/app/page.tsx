@@ -6,36 +6,19 @@ import {
   LifeBuoy,
   School,
   ShieldCheck,
+  Sparkles,
   Users,
 } from "lucide-react";
 import { Nav } from "@/components/ui/Nav";
-import { HeroSearch } from "@/components/home/HeroSearch";
 import { Footer } from "@/components/ui/Footer";
 import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-import { AccordionGallery } from "@/components/ui/AccordionGallery";
 import { PhotoFrame } from "@/components/ui/PhotoFrame";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { IndiaMap } from "@/components/hero-map/IndiaMap";
-import { placeholderTours } from "@/lib/placeholder-tours";
-import { TOURS } from "@/lib/tours/tours";
 
-/** Same three teasers, reshaped for the accordion gallery — wording untouched. */
-const featuredGalleryItems = placeholderTours.map((tour) => ({
-  image: tour.image,
-  alt: tour.imageAlt,
-  label: tour.title,
-  eyebrow: tour.eyebrow,
-  meta: tour.meta,
-  description: tour.description,
-  link: TOURS.find((t) => t.title === tour.title)
-    ? `/tours/${TOURS.find((t) => t.title === tour.title)!.slug}`
-    : undefined,
-}));
-
-/** Quiet credibility markers sitting under the search card — tuned for the dark hero photo. */
+/** Quiet credibility markers under the hero copy — tuned for the dark hero photo. */
 const trustMarkers = [
   { icon: CalendarCheck, label: "Since 1998", tone: "text-saffron" },
   { icon: School, label: "For Schools & Groups", tone: "text-sky" },
@@ -45,28 +28,24 @@ const trustMarkers = [
 
 const highlights = [
   {
-    icon: BookOpen,
-    title: "Educational Guides",
-    description:
-      "Every trip pairs a certified guide with a local historian or naturalist.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Safe & Organized",
-    description:
-      "Vetted routes, sized groups, and clear safety protocols on every itinerary.",
-  },
-  {
     icon: Users,
-    title: "Small Groups",
-    description:
-      "We keep groups intimate so every traveller gets real attention.",
+    title: "School Picnics",
+    description: "One-day experiences designed for school groups.",
+  },
+  {
+    icon: BookOpen,
+    title: "Educational Trips",
+    description: "Journeys that bring learning beyond the classroom.",
   },
   {
     icon: Compass,
-    title: "Local Experts",
-    description:
-      "Guides raised in the Sahyadris, sharing stories no guidebook has.",
+    title: "Outstation Journeys",
+    description: "Explore destinations across Maharashtra and India.",
+  },
+  {
+    icon: Sparkles,
+    title: "Customized Packages",
+    description: "Trips planned around the needs of each group or school.",
   },
 ];
 
@@ -115,8 +94,19 @@ export default function Home() {
               make every destination worth remembering.
             </p>
 
-            <div className="mt-12">
-              <HeroSearch />
+            <div className="mt-12 max-w-lg rounded-card border border-cream/20 bg-cream/10 p-8 backdrop-blur-sm sm:p-10">
+              <h2 className="font-display text-h3 leading-tight text-cream">
+                Planning a school trip?
+              </h2>
+              <p className="mt-3 text-body leading-relaxed text-cream/80">
+                Tell us where you want to go, and we&apos;ll help you plan the
+                journey.
+              </p>
+              <div className="mt-6">
+                <Button href="/contact" variant="accent">
+                  Plan a School Trip →
+                </Button>
+              </div>
             </div>
 
             {/* Trust markers */}
@@ -146,6 +136,10 @@ export default function Home() {
                 <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
                   Explore Maharashtra
                 </h2>
+                <p className="mt-4 max-w-lg text-body leading-relaxed text-gray-600">
+                  Discover the destinations Raigad Tours takes students and
+                  groups across Maharashtra.
+                </p>
               </div>
               <Button href="/tours" variant="ghost">
                 Explore all destinations →
@@ -175,30 +169,16 @@ export default function Home() {
           </Container>
         </section>
 
-        {/* Featured Tours */}
+        {/* Explore Our Journeys */}
         <section className="bg-beige py-30">
-          <Container>
-            <SectionHeading eyebrow="Featured Journeys" title="Popular Tours" />
-            <div className="overflow-hidden rounded-card">
-              <AccordionGallery
-                items={featuredGalleryItems}
-                defaultIndex={1}
-                expandRatio={0.52}
-                trigger="hover"
-                accentColor="#e98b2a"
-                overlayColor="#3e2f23"
-                textColor="#f8f4ec"
-                grayscale
-                showLabels
-                duration={0.6}
-                parallax={0.5}
-                tilt={0}
-                stagger={0.08}
-                height={460}
-                gap={10}
-                radius={20}
-                orientation="horizontal"
-              />
+          <Container className="text-center">
+            <h2 className="font-display text-h2 leading-tight text-brown">
+              Explore Our Journeys
+            </h2>
+            <div className="mt-8 flex justify-center">
+              <Button href="/tours" variant="primary">
+                Explore All Destinations →
+              </Button>
             </div>
           </Container>
         </section>
