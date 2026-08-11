@@ -6,17 +6,14 @@ import { Footer } from "@/components/ui/Footer";
 import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { Counter } from "@/components/ui/Counter";
-import { Timeline } from "@/components/about/Timeline";
-import { HandwrittenQuote } from "@/components/about/HandwrittenQuote";
 import { GradientWaves } from "@/components/ui/GradientWaves";
 import { ABOUT_IMAGES } from "@/lib/about-images";
-import { MISSION_VALUES, STATS } from "@/lib/about-content";
+import { MISSION_VALUES } from "@/lib/about-content";
 
 export const metadata: Metadata = {
-  title: "About — Raigad Tours",
+  title: "About Us — Raigad Tours",
   description:
-    "More than destinations. We create lifelong memories. The story of Raigad Tours, guiding school groups across India since 1998.",
+    "Since 1998, Raigad Tours has planned educational and group journeys for schools — from one-day picnics to destinations across Maharashtra and India.",
 };
 
 const MISSION_VALUE_ICONS = [Globe, Heart, ShieldCheck];
@@ -65,16 +62,17 @@ export default function AboutPage() {
                   Our Story
                 </p>
                 <h1 className="mt-4 font-display text-h1 leading-[1.05] text-cream">
-                  More than destinations.
+                  More than a trip.
                   <span className="block text-saffron">
-                    We create lifelong memories.
+                    A journey beyond the classroom.
                   </span>
                 </h1>
                 <p className="mt-8 max-w-xl text-body leading-relaxed text-cream/85">
-                  Since 1998, Raigad Tours has taken school groups out of the
-                  classroom and into the places their textbooks describe — forts,
-                  caves, coastlines, factory floors and science centres across
-                  India.
+                  What began with a passion for Maharashtra&apos;s heritage has
+                  grown into journeys that take schools and groups beyond the
+                  classroom. From educational day picnics to destinations
+                  across India, Raigad Tours creates experiences where travel,
+                  discovery and learning come together.
                 </p>
               </div>
             </Reveal>
@@ -99,55 +97,15 @@ export default function AboutPage() {
           </Container>
         </section>
 
-        {/* ---------- Statistics ---------- */}
-        <section className="py-30">
-          <Container>
-            <div className="grid grid-cols-1 gap-12 border-y border-line py-16 sm:grid-cols-3">
-              {STATS.map((stat, index) => (
-                <Reveal
-                  key={stat.label}
-                  delay={index * 0.12}
-                  className="text-center"
-                >
-                  <p className="font-display text-h1 leading-none text-forest">
-                    <Counter to={stat.value} suffix={stat.suffix} />
-                  </p>
-                  <p className="mt-4 text-small uppercase tracking-[0.14em] text-gray-500">
-                    {stat.label}
-                  </p>
-                </Reveal>
-              ))}
-            </div>
-          </Container>
-        </section>
-
-        {/* ---------- Timeline ---------- */}
-        <section className="bg-beige py-30">
-          <Container>
-            <Reveal className="mb-16 max-w-2xl">
-              <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                1998 — Today
-              </p>
-              <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
-                Twenty-seven years of first journeys
-              </h2>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <Timeline images={ABOUT_IMAGES} />
-            </Reveal>
-          </Container>
-        </section>
-
-        {/* ---------- Founder's Story ---------- */}
+        {/* ---------- Our Story ---------- */}
         <section className="py-30">
           <Container>
             <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[42fr_58fr] lg:gap-20">
               <Reveal>
                 <div className="relative aspect-[4/5] overflow-hidden rounded-image bg-beige">
                   <Image
-                    src={ABOUT_IMAGES.founder.src}
-                    alt={ABOUT_IMAGES.founder.alt}
+                    src={ABOUT_IMAGES.story.src}
+                    alt={ABOUT_IMAGES.story.alt}
                     fill
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className="object-cover [filter:sepia(0.2)_saturate(1.1)_contrast(1.04)]"
@@ -157,37 +115,25 @@ export default function AboutPage() {
 
               <Reveal delay={0.12}>
                 <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                  The Founder&apos;s Story
+                  Since 1998
                 </p>
                 <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
-                  It started with a history lesson that wouldn&apos;t sit still
+                  Where travel, discovery and learning come together
                 </h2>
                 <div className="mt-8 flex flex-col gap-5 text-body leading-relaxed text-gray-600">
                   <p>
-                    Our founder spent eleven years teaching history before
-                    starting Raigad Tours. The frustration was always the same:
-                    a chapter on the Maratha empire could be read, tested and
-                    forgotten within a fortnight — but a student who had climbed
-                    the steps to Raigad Fort never forgot it.
+                    Every trip starts the same way — a place worth learning
+                    from, and a plan built around getting a school group there
+                    safely, comfortably and on schedule. Coaches, itineraries,
+                    meals and permissions are ours to manage, so teachers can
+                    focus on the group.
                   </p>
                   <p>
-                    In 1998, a single hired bus took forty students up to the
-                    fort. The trip was unglamorous and slightly over budget.
-                    Every one of those students could still describe the
-                    approach to the main gate years later.
+                    Today that means everything from one-day school picnics
+                    near Mumbai and Thane to multi-day educational tours across
+                    Maharashtra, Goa, Gujarat and Telangana — each one planned
+                    around a place that has something real to teach.
                   </p>
-                  <p>
-                    That is the whole idea, and it has not changed since: put
-                    young people in the place, give them someone who knows it
-                    well, and get out of the way.
-                  </p>
-                </div>
-
-                <div className="mt-12 border-l-2 border-saffron/40 pl-8">
-                  <HandwrittenQuote
-                    quote="A fort is not a date in a textbook. It is a climb, a view, and a story you tell for the rest of your life."
-                    attribution="Founder, Raigad Tours"
-                  />
                 </div>
               </Reveal>
             </div>

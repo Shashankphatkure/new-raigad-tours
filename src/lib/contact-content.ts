@@ -72,7 +72,7 @@ export const CONTACT_FAQS = [
   {
     question: "What is the minimum group size?",
     answer:
-      "We run trips from twenty students upward. Smaller groups are possible for specialised itineraries, though the per-student cost rises. There is no upper limit; our largest single movement was 340 students across seven coaches.",
+      "We run trips from twenty students upward. Smaller groups are possible for specialised itineraries, though the per-student cost rises. There is no upper limit — we scale the number of coaches and staff to your group's size.",
   },
   {
     question: "Do accompanying teachers pay?",

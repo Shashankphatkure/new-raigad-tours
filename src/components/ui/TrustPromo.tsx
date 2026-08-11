@@ -2,34 +2,35 @@ import Image from "next/image";
 import {
   CalendarCheck,
   Clock,
-  GraduationCap,
-  LifeBuoy,
   MapPin,
   School,
   Shield,
   ShieldCheck,
-  Star,
   Tag,
   Users,
 } from "lucide-react";
 import { Container } from "./Container";
 import { Counter } from "./Counter";
+import { DESTINATIONS } from "@/components/hero-map/data";
+import { DAY_PICNICS } from "@/lib/day-picnics";
+
+const YEARS_SINCE_1998 = new Date().getFullYear() - 1998;
 
 const LEFT_TRUST_ITEMS = [
-  { icon: Shield, value: "Safety", label: "Certified Protocol" },
+  { icon: Shield, value: "Safety", label: "First Protocols" },
   { icon: Clock, value: "Direct", label: "Trip Support" },
   { icon: Tag, value: "Fair", label: "Transparent Pricing" },
-  { icon: School, value: "500+", label: "Schools Served" },
-  { icon: Users, value: "1,20,000+", label: "Students Guided" },
-  { icon: MapPin, value: "10+", label: "Destinations" },
+  { icon: CalendarCheck, value: "Since 1998", label: "Educational Travel" },
+  { icon: MapPin, value: `${DESTINATIONS.length}+`, label: "Tour Destinations" },
+  { icon: School, value: `${DAY_PICNICS.length}`, label: "School Picnic Spots" },
 ];
 
 const PHOTO_STAT_TILES = [
-  { icon: Star, value: "4.9", label: "School Satisfaction" },
-  { icon: CalendarCheck, value: "27+", label: "Years of Experience" },
-  { icon: ShieldCheck, value: "100%", label: "Safety Record" },
-  { icon: GraduationCap, value: "1,20,000+", label: "Students Guided" },
-  { icon: LifeBuoy, value: "Direct", label: "Trip Support" },
+  { icon: CalendarCheck, value: "1998", label: "Established" },
+  { icon: ShieldCheck, value: "Safety", label: "First Approach" },
+  { icon: MapPin, value: `${DESTINATIONS.length}+`, label: "Destinations" },
+  { icon: Users, value: "Schools &", label: "Groups" },
+  { icon: Clock, value: "Direct", label: "Trip Support" },
   { icon: Tag, value: "Fair", label: "Transparent Pricing" },
 ];
 
@@ -37,6 +38,9 @@ const PHOTO_STAT_TILES = [
  * Cross-page trust promo, placed just above the footer on every page.
  * Split card: credentials + copy on white, a photo with a marquee stat and
  * six tiles on the other side.
+ *
+ * Every figure here is either a fixed fact (Since 1998) or a real count
+ * pulled from the site's own destination data — nothing invented.
  */
 export function TrustPromo() {
   return (
@@ -50,8 +54,8 @@ export function TrustPromo() {
               <span className="block text-forest">Across India.</span>
             </h2>
             <p className="mt-6 max-w-md text-body leading-relaxed text-gray-600">
-              Twenty-seven years of guiding students beyond the classroom —
-              heritage forts, working science centres, and coastlines studied
+              Since 1998, guiding students beyond the classroom — heritage
+              forts, working science centres, and coastlines studied
               first-hand. Every journey is planned with safety, curriculum and
               curiosity in equal measure.
             </p>
@@ -92,10 +96,10 @@ export function TrustPromo() {
                   Trusted Since 1998
                 </p>
                 <p className="mt-3 font-display text-h1 leading-none text-cream">
-                  <Counter to={120000} suffix="+" />
+                  <Counter to={YEARS_SINCE_1998} suffix="+" />
                 </p>
                 <p className="mt-3 text-body text-cream/85">
-                  students guided across India
+                  years guiding schools and groups beyond the classroom
                 </p>
               </div>
 

@@ -57,9 +57,19 @@ function sampleAlongPath(path: SVGPathElement, progress: number) {
   return { x: point.x, y: point.y, angle };
 }
 
-export function IndiaMap() {
+type IndiaMapProps = {
+  /** Restricts which regions are selectable on the map. Omit to show all. */
+  regionIds?: string[];
+};
+
+export function IndiaMap({ regionIds }: IndiaMapProps = {}) {
   const prefersReducedMotion = useReducedMotion();
   const reducedMotion = Boolean(prefersReducedMotion);
+
+  const regions = useMemo(
+    () => (regionIds ? REGIONS.filter((region) => regionIds.includes(region.id)) : REGIONS),
+    [regionIds],
+  );
 
   const [viewport, setViewport] = useState<Viewport>("desktop");
   const [activeRegionId, setActiveRegionId] = useState<string | null>(null);
@@ -92,8 +102,8 @@ export function IndiaMap() {
   }, []);
 
   const activeRegion = useMemo(
-    () => REGIONS.find((region) => region.id === activeRegionId) ?? null,
-    [activeRegionId],
+    () => regions.find((region) => region.id === activeRegionId) ?? null,
+    [regions, activeRegionId],
   );
 
   const regionDestinations = useMemo(
@@ -181,7 +191,7 @@ export function IndiaMap() {
       setPhase("idle");
       setShowDestinations(false);
 
-      const region = REGIONS.find((r) => r.id === id);
+      const region = regions.find((r) => r.id === id);
       if (!region) return;
 
       if (viewport === "mobile") {
@@ -210,7 +220,7 @@ export function IndiaMap() {
         setTimeout(() => setShowDestinations(true), REGION_SETTLE_MS),
       );
     },
-    [activeRegionId, viewport, reducedMotion, clearPending],
+    [regions, activeRegionId, viewport, reducedMotion, clearPending],
   );
 
   const resetToIndia = useCallback(() => {
@@ -303,7 +313,7 @@ export function IndiaMap() {
             )}
           </AnimatePresence>
 
-          {REGIONS.map((region) => (
+          {regions.map((region) => (
             <RegionMarker
               key={region.id}
               region={region}

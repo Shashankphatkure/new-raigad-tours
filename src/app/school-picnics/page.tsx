@@ -17,7 +17,7 @@ import { DAY_PICNICS, DAY_PICNIC_FAQS } from "@/lib/day-picnics";
 import { DAY_PICNIC_IMAGES } from "@/lib/day-picnics-images";
 
 export const metadata: Metadata = {
-  title: "Day Picnics — Raigad Tours",
+  title: "School Picnics — Raigad Tours",
   description:
     "One-day school picnics to more than twenty destinations across Mumbai, Thane, Pune and the Sahyadris — amusement parks, water parks, resorts and hands-on farm experiences, each priced and planned for school groups.",
 };
@@ -78,21 +78,20 @@ export default function DayPicnicsPage() {
           <Container className="absolute inset-x-0 bottom-0">
             <Reveal className="max-w-2xl pb-16 sm:pb-20 md:pb-24">
               <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                Day Picnics
+                One-Day School Picnics
               </p>
               <h1 className="mt-4 font-display text-h1 leading-[1.05] text-cream">
-                One Day.
-                <span className="block">A Lifetime of Memories.</span>
+                One day.
+                <span className="block">A whole new classroom.</span>
               </h1>
               <p className="mt-6 max-w-lg text-body leading-relaxed text-cream/85">
-                Alongside our multi-day journeys, Raigad Tours plans one-day
-                school picnics to more than twenty destinations near Mumbai,
-                Thane and Pune — amusement parks, water parks, resorts and a
-                working farm — each on a fixed, per-student tariff.
+                Educational outings, amusement parks, water parks and group
+                experiences designed for students to learn, explore and have
+                fun together — each on a fixed, per-student tariff.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href="#destinations" variant="accent">
-                  Explore Day Picnics
+                  Explore Destinations
                 </Button>
                 <Button href="#enquiry" variant="inverse">
                   Plan a School Picnic
@@ -145,7 +144,17 @@ export default function DayPicnicsPage() {
               eyebrow={`${DAY_PICNICS.length} Destinations`}
               title="Where students can go"
             />
+            <p className="-mt-6 mb-8 text-small text-gray-500">
+              Prices shown are per student, covering entry and food as listed.
+              Transport charges extra*.
+            </p>
             <DayPicnicsBrowser />
+
+            <div className="mt-16 flex justify-center">
+              <Button href="#enquiry" variant="primary">
+                Plan a School Picnic
+              </Button>
+            </div>
           </Container>
         </section>
 
@@ -160,12 +169,12 @@ export default function DayPicnicsPage() {
           </Container>
         </section>
 
-        {/* ---------- 05: Why Day Picnics ---------- */}
+        {/* ---------- 05: Why School Picnics ---------- */}
         <section className="bg-forest py-24 md:py-30">
           <Container>
             <Reveal className="mb-16 max-w-2xl">
               <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
-                Why Day Picnics
+                Why School Picnics
               </p>
               <h2 className="mt-3 font-display text-h2 leading-tight text-cream">
                 A day out is still an education

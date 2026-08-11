@@ -14,6 +14,7 @@ import { Footer } from "@/components/ui/Footer";
 import { TrustPromo } from "@/components/ui/TrustPromo";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 import { AccordionGallery } from "@/components/ui/AccordionGallery";
 import { PhotoFrame } from "@/components/ui/PhotoFrame";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -37,7 +38,7 @@ const featuredGalleryItems = placeholderTours.map((tour) => ({
 /** Quiet credibility markers sitting under the search card — tuned for the dark hero photo. */
 const trustMarkers = [
   { icon: CalendarCheck, label: "Since 1998", tone: "text-saffron" },
-  { icon: School, label: "500+ Schools Served", tone: "text-sky" },
+  { icon: School, label: "For Schools & Groups", tone: "text-sky" },
   { icon: ShieldCheck, label: "Safety-First Protocol", tone: "text-cream" },
   { icon: LifeBuoy, label: "Dedicated Trip Support", tone: "text-saffron" },
 ];
@@ -99,18 +100,19 @@ export default function Home() {
             <span className="inline-flex items-center gap-2.5 rounded-button border border-cream/25 bg-cream/10 py-2.5 pl-3 pr-5 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-saffron" aria-hidden />
               <span className="text-small font-medium text-cream">
-                Educational &amp; Heritage Travel
+                Educational &amp; Group Travel
               </span>
             </span>
 
             <h1 className="mt-8 max-w-4xl font-display text-h1 leading-[1.05] text-cream">
-              <span className="font-accent italic text-saffron">Learning</span>{" "}
-              Beyond Classrooms Since 1998
+              <span className="font-accent italic text-saffron">Journeys</span>{" "}
+              That Take Learning
+              <span className="block">Beyond the Classroom</span>
             </h1>
 
             <p className="mt-7 max-w-xl text-body leading-relaxed text-cream/85">
-              Heritage treks, coastal expeditions, and school programs across
-              Raigad — led by certified guides and local experts.
+              Educational trips, school picnics and group journeys designed to
+              make every destination worth remembering.
             </p>
 
             <div className="mt-12">
@@ -133,10 +135,24 @@ export default function Home() {
           </Container>
         </section>
 
-        {/* Interactive India map */}
+        {/* Interactive Maharashtra map */}
         <section id="explore-india" className="py-30">
           <Container>
-            <IndiaMap />
+            <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
+                  Start With Maharashtra
+                </p>
+                <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
+                  Explore Maharashtra
+                </h2>
+              </div>
+              <Button href="/tours" variant="ghost">
+                Explore all destinations →
+              </Button>
+            </div>
+
+            <IndiaMap regionIds={["maharashtra"]} />
           </Container>
         </section>
 
@@ -200,16 +216,17 @@ export default function Home() {
                 Every Journey Begins With Curiosity
               </p>
               <h2 className="mt-2 font-display text-h2 leading-tight text-brown">
-                Two decades of guiding families through the Sahyadris
+                More Than 25 Years of Journeys That Matter
               </h2>
               <p className="mt-5 max-w-lg text-body leading-relaxed text-gray-600">
-                What began as weekend treks for local students has grown into
-                organized heritage and nature programs for families and
-                schools across the region — always with safety, history, and
-                genuine curiosity at the center.
+                From school picnics and educational excursions to journeys
+                across India, Raigad Tours has spent decades creating
+                experiences that take learning beyond the classroom.
               </p>
               <div className="mt-8">
-                <Button href="/about" variant="secondary">Learn More About Us</Button>
+                <MagneticButton>
+                  <Button href="/about" variant="secondary">Learn More About Us</Button>
+                </MagneticButton>
               </div>
             </div>
           </Container>

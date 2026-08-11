@@ -1,68 +1,11 @@
 /**
- * Placeholder narrative content for the About page.
+ * Narrative content for the About page.
  *
- * All copy, names, dates and figures below are illustrative and awaiting real
- * material from the Raigad Tours booklet — the structure is what's final here.
+ * Only "Since 1998" is verified company fact (from the tariff card). No
+ * founder names, milestone dates, or figures (schools served, students
+ * travelled) are invented here — where we don't have a real number, we
+ * don't show one.
  */
-
-export type TimelineEra = {
-  year: string;
-  label: string;
-  title: string;
-  description: string;
-  imageSlot: "era-1998" | "era-2005" | "era-2015" | "era-today";
-};
-
-export const TIMELINE: TimelineEra[] = [
-  {
-    year: "2010",
-    label: "Founded",
-    title: "Raigad Tours founded with 3 tour packages",
-    description: "Raigad Tours founded with 3 tour packages.",
-    imageSlot: "era-1998",
-  },
-  {
-    year: "2013",
-    label: "Expansion",
-    title: "Expanded to 15+ tours across Maharashtra",
-    description: "Expanded to 15+ tours across Maharashtra.",
-    imageSlot: "era-2005",
-  },
-  {
-    year: "2016",
-    label: "5,000 travellers",
-    title: "Reached 5,000 happy travellers milestone",
-    description: "Reached 5,000 happy travellers milestone.",
-    imageSlot: "era-2015",
-  },
-  {
-    year: "2018",
-    label: "Trekking division",
-    title: "Launched adventure trekking division",
-    description: "Launched adventure trekking division.",
-    imageSlot: "era-today",
-  },
-  {
-    year: "2020",
-    label: "Virtual tours",
-    title: "Introduced virtual heritage tours during the pandemic",
-    description: "Introduced virtual heritage tours during the pandemic.",
-    imageSlot: "era-1998",
-  },
-  {
-    year: "2023",
-    label: "15,000+ travellers",
-    title: "Crossed 15,000 travellers, 50+ tour packages",
-    description: "Crossed 15,000 travellers, 50+ tour packages.",
-    imageSlot: "era-2005",
-  },
-];
-
-export const STATS = [
-  { value: 500, suffix: "+", label: "Schools Served" },
-  { value: 120000, suffix: "+", label: "Students Travelled" },
-  { value: 27, suffix: "", label: "Years of Experience" },
-];
 
 export const MISSION_VALUES = [
   {
@@ -81,4 +24,3 @@ export const MISSION_VALUES = [
       "Your safety is our top priority. All tours follow strict safety protocols with trained guides, emergency support, and insurance coverage.",
   },
 ];
-

@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { TourCard } from "@/components/tours/TourCard";
 import { ToursBrowser } from "@/components/tours/ToursBrowser";
+import { IndiaMap } from "@/components/hero-map/IndiaMap";
 import { FEATURED_TOURS, POPULAR_TOURS, TOURS } from "@/lib/tours/tours";
 import type { TripType } from "@/lib/tours/types";
 
@@ -69,6 +70,27 @@ export default function ToursPage() {
                 on the coach home.
               </p>
             </Reveal>
+          </Container>
+        </section>
+
+        {/* ---------- Explore by region ---------- */}
+        <section className="py-30">
+          <Container>
+            <Reveal className="mb-12 max-w-2xl">
+              <p className="text-small font-semibold uppercase tracking-[0.14em] text-saffron">
+                Explore With Raigad Tours
+              </p>
+              <h2 className="mt-3 font-display text-h2 leading-tight text-brown">
+                Where will your next journey take you?
+              </h2>
+              <p className="mt-5 text-body leading-relaxed text-gray-600">
+                We organize educational and group journeys across Maharashtra
+                and select destinations across India. Tap a region to see
+                where your students could go.
+              </p>
+            </Reveal>
+
+            <IndiaMap />
           </Container>
         </section>
 
